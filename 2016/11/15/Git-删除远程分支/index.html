@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="LiuRongtao">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="fiftyk"/>
+  <meta property="og:title" content="Git 删除远程分支"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="fiftyk"/>
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:image" content="http://fiftyk.github.ioundefined"/>
   
     <link rel="alternate" href="/atom.xml" title="fiftyk" type="application/atom+xml">
@@ -35,8 +35,7 @@
 </head>
 
   <body>
-    <!-- Archive Header -->
-<!-- Page Header -->
+    <!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
@@ -44,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Blog Archives</p>
+          <p class="title">Git 删除远程分支</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -90,58 +89,51 @@
 </header>
 
 
-<!-- Archive List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-        <div class="archive-item">
-  <a href="/2016/11/15/Git-删除远程分支/" class="post-title">
-    Git 删除远程分支
-  </a>
-  <div class="date text-muted">Posted on 2016-11-15 15:22:32</div>
-</div>
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By LiuRongtao</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-15</span>
+            <span class="time">18:40:55</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
 
-      
-        <div class="archive-item">
-  <a href="/2016/11/09/异步异步/" class="post-title">
-    异步!异步!
-  </a>
-  <div class="date text-muted">Posted on 2016-11-09 18:00:16</div>
-</div>
+<a href="/categories/学习/">学习</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
 
-      
-        <div class="archive-item">
-  <a href="/2016/11/08/My-New-Post/" class="post-title">
-    标题设置
-  </a>
-  <div class="date text-muted">Posted on 2016-11-08 17:42:36</div>
-</div>
+<a class="tag" href="/tags/git/">#git</a>
 
-      
-        <div class="archive-item">
-  <a href="/2016/11/08/hello-world/" class="post-title">
-    Hello World
-  </a>
-  <div class="date text-muted">Posted on 2016-11-08 17:12:41</div>
-</div>
 
-      
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>应该，其实也真的很简单：<code>git push &lt;remote&gt; :&lt;target-branch-name&gt;</code><br><a id="more"></a></p>
+<p>比如你要删除远程仓库 origin 上的 feature/001 分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin :feature/001</div></pre></td></tr></table></figure>
+<p>原来我都是通过 sourceTree 删除的。</p>
+<p>参考：<a href="https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF#删除远程分支" target="_blank" rel="external">《git-scm.com/3.5 Git 分支 - 远程分支》</a></p>
 
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-          
-      </ul>
-    </div>
-  </div>
-</div>
+</article>
 
 
 
