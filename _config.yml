@@ -71,6 +71,6 @@ theme: aero-dual
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/fiftyk/fiftyk.github.io
+  repo: git@github.com:fiftyk/fiftyk.github.io.git
   branch: master
-  message: 换个主题
+  message: new_post
