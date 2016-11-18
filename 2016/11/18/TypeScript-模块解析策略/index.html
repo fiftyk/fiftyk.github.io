@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="LiuRongtao">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="TypeScript 模块解析策略"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="fiftyk"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://fiftyk.github.ioundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="fiftyk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>fiftyk</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">TypeScript 模块解析策略</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/fiftyk">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:fiftyk@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By LiuRongtao</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-18</span>
+            <span class="time">18:15:06</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/学习/">学习</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/typescript/">#typescript</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>发表是最好的记忆。<br><a id="more"></a></p>
+<p>若干天前还啃了半天英文原文<a href="http://www.typescriptlang.org/docs/handbook/module-resolution.html" target="_blank" rel="external">Module Resolution</a>，然后，今天都忘了！于是重新复习一遍，且记录下来，算是做个笔记。</p>
+<h1 id="一、相对-vs-非相对模块导入"><a href="#一、相对-vs-非相对模块导入" class="headerlink" title="一、相对 vs 非相对模块导入"></a>一、相对 vs 非相对模块导入</h1><h2 id="1-1-相对导入"><a href="#1-1-相对导入" class="headerlink" title="1.1 相对导入"></a>1.1 相对导入</h2><p>以 <code>/</code>, <code>./</code>, <code>../</code> 开头的导入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import A from &apos;/ModuleA&apos;;</div><div class="line">import B from &apos;./ModuleB&apos;;</div><div class="line">import C from &apos;../ModuleC&apos;;</div></pre></td></tr></table></figure>
+<h2 id="1-2-非相对导入"><a href="#1-2-非相对导入" class="headerlink" title="1.2 非相对导入"></a>1.2 非相对导入</h2><p>所有非相对导入之外的导入方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import * as express from &apos;express&apos;;</div><div class="line">import &#123; Component &#125; from &apos;angular2/core&apos;;</div></pre></td></tr></table></figure>
+<h1 id="二、模块导入策略"><a href="#二、模块导入策略" class="headerlink" title="二、模块导入策略"></a>二、模块导入策略</h1><p>TypeScript 模块导入策略默认为 node 和 classic 两种方式。我们可以通过 <code>--moduleResolution</code> 指定模块导入策略。如果没有指定的话，tsc 会根据 <code>--module</code> 指定的值选择策略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">module === &apos;amd&apos; | &apos;system&apos; | &apos;ES6&apos; ? &apos;classic&apos; : &apos;node&apos;</div></pre></td></tr></table></figure>
+<h2 id="2-1-Classic"><a href="#2-1-Classic" class="headerlink" title="2.1 Classic"></a>2.1 Classic</h2><h3 id="2-1-1-相对导入"><a href="#2-1-1-相对导入" class="headerlink" title="2.1.1 相对导入"></a>2.1.1 相对导入</h3><p>文件 <code>/root/src/folder/A.ts</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &#123; b &#125; from &quot;./moduleB&quot;;</div></pre></td></tr></table></figure>
+<p>这时编译器将搜索：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/root/src/folder/moduleB.ts</div><div class="line">/root/src/folder/moduleB.d.ts</div></pre></td></tr></table></figure>
+<h3 id="2-1-2-非相对导入时"><a href="#2-1-2-非相对导入时" class="headerlink" title="2.1.2 非相对导入时"></a>2.1.2 非相对导入时</h3><p>文件 <code>/root/src/folder/A.ts</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &#123; b &#125; from &quot;moduleB&quot;;</div></pre></td></tr></table></figure>
+<p>这时编译器将搜索：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/root/src/folder/moduleB.ts</div><div class="line">/root/src/folder/moduleB.d.ts</div><div class="line">/root/src/moduleB.ts</div><div class="line">/root/src/moduleB.d.ts</div><div class="line">/root/moduleB.ts</div><div class="line">/root/moduleB.d.ts</div><div class="line">moduleB.ts</div><div class="line">moduleB.d.ts</div></pre></td></tr></table></figure>
+<h2 id="2-2-Node"><a href="#2-2-Node" class="headerlink" title="2.2 Node"></a>2.2 Node</h2><h3 id="nodejs-的模块解析策略"><a href="#nodejs-的模块解析策略" class="headerlink" title="nodejs 的模块解析策略"></a>nodejs 的模块解析策略</h3><h4 id="相对导入"><a href="#相对导入" class="headerlink" title="相对导入"></a>相对导入</h4><p>文件 <code>/root/src/folder/A.js</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var b = require(&quot;./moduleB&quot;);</div></pre></td></tr></table></figure>
+<p>这时编译器将搜索：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/root/src/folder/moduleB.js</div><div class="line">/root/src/folder/moduleB/package.json &gt; main</div><div class="line">/root/src/folder/moduleB/index.ts</div></pre></td></tr></table></figure>
+<h4 id="非相对导入"><a href="#非相对导入" class="headerlink" title="非相对导入"></a>非相对导入</h4><p>文件 <code>/root/src/folder/A.js</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var b = require(&quot;moduleB&quot;);</div></pre></td></tr></table></figure>
+<p>这时编译器将搜索：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/root/src/node_modules/moduleB.js</div><div class="line">/root/src/node_modules/moduleB/package.json &gt; main</div><div class="line">/root/src/node_modules/moduleB/index.js</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/root/node_modules/moduleB.js</div><div class="line">/root/node_modules/moduleB/package.json &gt; main</div><div class="line">/root/node_modules/moduleB/index.js</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/node_modules/moduleB.js</div><div class="line">/node_modules/moduleB/package.json &gt; main</div><div class="line">/node_modules/moduleB/index.js</div></pre></td></tr></table></figure>
+<h3 id="2-2-1-moduleResolution-node-时，相对导入"><a href="#2-2-1-moduleResolution-node-时，相对导入" class="headerlink" title="2.2.1 --moduleResolution=node 时，相对导入"></a>2.2.1 <code>--moduleResolution=node</code> 时，相对导入</h3><p>文件 <code>/root/src/folder/A.ts</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import B from &quot;./moduleB&quot;;</div></pre></td></tr></table></figure>
+<p>这时编译器将搜索：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/root/src/folder/moduleB.ts</div><div class="line">/root/src/folder/moduleB.tsx</div><div class="line">/root/src/folder/moduleB.d.ts</div><div class="line">/root/src/folder/moduleB/package.json &gt; typings</div><div class="line">/root/src/folder/moduleB/index.ts</div><div class="line">/root/src/folder/moduleB/index.tsx</div><div class="line">/root/src/folder/moduleB/index.d.ts</div></pre></td></tr></table></figure>
+<h3 id="2-2-2-moduleResolution-node-时，非相对导入"><a href="#2-2-2-moduleResolution-node-时，非相对导入" class="headerlink" title="2.2.2 --moduleResolution=node 时，非相对导入"></a>2.2.2 <code>--moduleResolution=node</code> 时，非相对导入</h3><p>文件 <code>/root/src/folder/A.ts</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import B from &quot;moduleB&quot;;</div></pre></td></tr></table></figure>
+<p>这时编译器将搜索：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/root/src/node_modules/moduleB.ts</div><div class="line">/root/src/node_modules/moduleB.tsx</div><div class="line">/root/src/node_modules/moduleB.d.ts</div><div class="line">/root/src/node_modules/moduleB/package.json &gt; typings</div><div class="line">/root/src/node_modules/moduleB/index.ts</div><div class="line">/root/src/node_modules/moduleB/index.tsx</div><div class="line">/root/src/node_modules/moduleB/index.d.ts</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/root/node_modules/moduleB.ts</div><div class="line">/root/node_modules/moduleB.tsx</div><div class="line">/root/node_modules/moduleB.d.ts</div><div class="line">/root/node_modules/moduleB/package.json &gt; typings</div><div class="line">/root/node_modules/moduleB/index.ts</div><div class="line">/root/node_modules/moduleB/index.tsx</div><div class="line">/root/node_modules/moduleB/index.d.ts</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/node_modules/moduleB.ts</div><div class="line">/node_modules/moduleB.tsx</div><div class="line">/node_modules/moduleB.d.ts</div><div class="line">/node_modules/moduleB/package.json &gt; typings</div><div class="line">/node_modules/moduleB/index.ts</div><div class="line">/node_modules/moduleB/index.tsx</div><div class="line">/node_modules/moduleB/index.d.ts</div></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
