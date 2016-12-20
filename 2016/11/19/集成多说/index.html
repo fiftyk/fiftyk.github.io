@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="LiuRongtao">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="集成多说"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="fiftyk"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://fiftyk.github.ioundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="fiftyk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>fiftyk</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/images/67fde740bd68490a9ad2484c445d7395_th.jpeg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">集成多说</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/fiftyk">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:fiftyk@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By LiuRongtao</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2016-11-19</span>
+            <span class="time">16:00:02</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/杂项/">杂项</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>多说是一款追求极致体验的社会化评论框….<br><a id="more"></a></p>
+<p>在 hexo 的另一款主题 <a href="https://github.com/viosey/hexo-theme-material" target="_blank" rel="external">hexo-material</a> 中，发现了一些集成服务，比如多说。为博客增加评论功能还真是简单。</p>
+<p>我现在使用的主题是 <a href="https://github.com/levblanc/hexo-theme-aero-dual" target="_blank" rel="external">aero-dual</a>，参考(<code>copy</code>) hexo-material 修改了 aero-dual 中的 3 个文件，实现了集成多说评论。</p>
+<ul>
+<li>一、<code>aero-dual/_config.yml</code> 文件末尾后增加：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># Comment Systems</div><div class="line"># Available value:</div><div class="line">#     duoshuo</div><div class="line">comment:</div><div class="line">    use: duoshuo</div><div class="line">    shortname: </div><div class="line">    duoshuo_thread_key: path</div><div class="line">    duoshuo_embed_js_url: &quot;https://static.duoshuo.com/embed.js&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>二、<code>aero-dual/layout/_partial/after-footer.ejs</code> 文件末尾增加：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;% if(theme.comment.use == &quot;duoshuo&quot;)&#123; %&gt;</div><div class="line">    &lt;!-- 多说公共 js 代码 start --&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    var duoshuoQuery = &#123;short_name:&quot;&lt;%= theme.comment.shortname %&gt;&quot;&#125;;</div><div class="line">        (function() &#123;</div><div class="line">            var ds = document.createElement(&apos;script&apos;);</div><div class="line">            ds.type = &apos;text/javascript&apos;;ds.async = true;</div><div class="line">            ds.src = &apos;&lt;%= theme.comment.duoshuo_embed_js_url %&gt;&apos;;</div><div class="line">            ds.charset = &apos;UTF-8&apos;;</div><div class="line">            (document.getElementsByTagName(&apos;head&apos;)[0] </div><div class="line">             || document.getElementsByTagName(&apos;body&apos;)[0]).appendChild(ds);</div><div class="line">        &#125;)();</div><div class="line">    &lt;/script&gt;</div><div class="line">    &lt;!-- 多说公共 js 代码 end --&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>三、<code>aero-dual/layout/_partial/post/article.ejs</code> 文件的 article 标签内 append 下面的代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;% if(theme.comment.use == &quot;duoshuo&quot;)&#123; %&gt;</div><div class="line">    &lt;!-- Comment Number --&gt;</div><div class="line">    &lt;div class=&quot;container typo&quot;&gt;</div><div class="line">      &lt;div class=&quot;row&quot;&gt;</div><div class="line">        &lt;div class=&quot;col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1&quot;&gt;</div><div class="line">          &lt;div class=&quot;ds-thread&quot; </div><div class="line">            data-thread-key=&quot;&lt;%= page.path %&gt;&quot; </div><div class="line">            data-title=&quot;&lt;%= page.title %&gt;&quot; </div><div class="line">            data-url=&quot;&lt;%= page.permalink %&gt;&quot;&gt;</div><div class="line">          &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

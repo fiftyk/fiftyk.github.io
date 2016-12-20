@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="LiuRongtao">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="OpenLayers 加载 Google 地图"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="fiftyk"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://fiftyk.github.ioundefined"/>
+  
+    <link rel="alternate" href="/atom.xml" title="fiftyk" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>fiftyk</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">OpenLayers 加载 Google 地图</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/fiftyk">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:fiftyk@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By LiuRongtao</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2013-01-22</span>
+            <span class="time">16:00:02</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/iteye/">iteye</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/javascript/">#javascript</a> <a class="tag" href="/tags/gis/">#gis</a> <a class="tag" href="/tags/openlayers/">#openlayers</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>内容摘要<br><a id="more"></a></p>
+<p><a href="http://fiftyk.iteye.com/admin/blogs/1773520" target="_blank" rel="external">原文地址</a></p>
+<p>原先发在了 OpenLayers 中文网,交流的人很少，所有又发到这里。<br>之前看了一些继承自 TileCache 的实现,这里也发一下自己的实现,继承自 XYZ 类。接触 OpenLayers 时间不长,没有实际项目应用经验,有理解不清的地方还望各位多多指教,谢谢！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">OpenLayers.Layer.GMapLayer = OpenLayers.Class(OpenLayers.Layer.XYZ, &#123;</div><div class="line">    wrapDateLine:true,</div><div class="line">    sphericalMercator:true,</div><div class="line">    </div><div class="line">    urlTpl:&quot;&amp;hl=zh-CN&amp;gl=CN&amp;src=app&amp;x=$&#123;x&#125;&amp;y=$&#123;y&#125;&amp;z=$&#123;z&#125;&quot;,</div><div class="line">    </div><div class="line">    /**</div><div class="line">      * @constructor</div><div class="line">      * @param &#123;String&#125; name</div><div class="line">      * @param &#123;String&#125; url</div><div class="line">      * @param &#123;Object&#125; options</div><div class="line">      */</div><div class="line">    initialize:function(name,url,options)&#123;</div><div class="line">            options = OpenLayers.Util.applyDefaults(&#123;&#125;, </div><div class="line">              options);</div><div class="line">            </div><div class="line">            OpenLayers.Layer.XYZ.prototype.initialize.apply(this,</div><div class="line">              [name,url,options]);</div><div class="line">    &#125;,</div><div class="line">    </div><div class="line">    getURL: function (bounds) &#123;</div><div class="line">        var xyz = this.getXYZ(bounds);</div><div class="line">        var url = this.url;</div><div class="line">        if (OpenLayers.Util.isArray(url)) &#123;</div><div class="line">            var s = &apos;&apos; + xyz.x + xyz.y + xyz.z;</div><div class="line">            url = this.selectUrl(s, url) + this.urlTpl;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        return OpenLayers.String.format(url, xyz);</div><div class="line">    &#125;,</div><div class="line">    </div><div class="line">    destory:function()&#123;</div><div class="line">        this.sphericalMercator = null;</div><div class="line">        this.urlTpl = null;</div><div class="line">        OpenLayers.Layer.XYZ.prototype.destroy.apply(this, arguments);</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    clone:function(obj)&#123;</div><div class="line">            if(obj == null)&#123;</div><div class="line">                    obj = new OpenLayers.Layer.GMapLayer(this.name,this.url,</div><div class="line">                      this.getOptions());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            obj = OpenLayers.Layer.XYZ.prototype.clone.apply(this,[obj]);</div><div class="line"></div><div class="line">            return obj;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    getXYZ:function(bounds)&#123;</div><div class="line">            var res = this.getServerResolution();</div><div class="line">    var x = Math.round((bounds.left - this.maxExtent.left) /</div><div class="line">        (res * this.tileSize.w));</div><div class="line"></div><div class="line">    var y = Math.round((this.maxExtent.top - bounds.top) /</div><div class="line">        (res * this.tileSize.h));</div><div class="line"></div><div class="line">    var z = this.getServerZoom();//继承自Grid</div><div class="line"></div><div class="line">    if (this.wrapDateLine) &#123;</div><div class="line">        var limit = Math.pow(2, z);</div><div class="line">        x = ((x % limit) + limit) % limit;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return &#123;&apos;x&apos;: x, &apos;y&apos;: y, &apos;z&apos;: z&#125;;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    CLASS_NAME: &quot;OpenLayers.Layer.GMapLayer&quot;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>使用方法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> OpenLayers.Map(<span class="string">"map"</span>,&#123;</div><div class="line">    <span class="attr">layers</span>:[</div><div class="line">        <span class="keyword">new</span> OpenLayers.Layer.GMapLayer(<span class="string">"Google卫星图层"</span>,</div><div class="line">            [<span class="string">"http://mt1.google.cn/vt/lyrs=s@123"</span>]),</div><div class="line">        <span class="keyword">new</span> OpenLayers.Layer.GMapLayer(<span class="string">"Google标注图层"</span>,</div><div class="line">            [<span class="string">"http://mt2.google.cn/vt/imgtp=png32&amp;lyrs=h@205000000"</span>]),</div><div class="line">        <span class="keyword">new</span> OpenLayers.Layer.GMapLayer(<span class="string">"Google矢量图层"</span>,</div><div class="line">            [<span class="string">"http://mt1.google.cn/vt/lyrs=m@205000000"</span>]),</div><div class="line">        <span class="keyword">new</span> OpenLayers.Layer.GMapLayer(<span class="string">"Google地形图层"</span>,</div><div class="line">            [<span class="string">"http://mt1.google.cn/vt/lyrs=t@130,r@205000000"</span>]),</div><div class="line">        <span class="keyword">new</span> OpenLayers.Layer.GMapLayer(<span class="string">"Google路况图层"</span>,</div><div class="line">            [<span class="string">"http://mt0.google.com/vt?lyrs=m@205000000,traffic|seconds_into_week:-1"</span>])</div><div class="line">    ]</div><div class="line">    ,<span class="attr">center</span>:<span class="keyword">new</span> OpenLayers.LonLat(<span class="number">120.30549379552448</span>,<span class="number">31.55342767838905</span>),</div><div class="line">&#125;);</div><div class="line"><span class="comment">//图层切换控件</span></div><div class="line">map.addControl(<span class="keyword">new</span> OpenLayers.Control.LayerSwitcher());</div><div class="line"><span class="comment">//鹰眼控件</span></div><div class="line">map.addControl(<span class="keyword">new</span> OpenLayers.Control.OverviewMap());</div></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

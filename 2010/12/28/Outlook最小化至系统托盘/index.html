@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="LiuRongtao">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="fiftyk"/>
+  <meta property="og:title" content="Outlook 最小化至系统托盘"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="fiftyk"/>
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:image" content="http://fiftyk.github.ioundefined"/>
   
     <link rel="alternate" href="/atom.xml" title="fiftyk" type="application/atom+xml">
@@ -35,8 +35,7 @@
 </head>
 
   <body>
-    <!-- Archive Header -->
-<!-- Page Header -->
+    <!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
@@ -44,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Blog Archives</p>
+          <p class="title">Outlook 最小化至系统托盘</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -90,82 +89,58 @@
 </header>
 
 
-<!-- Archive List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-        <div class="archive-item">
-  <a href="/2016/12/20/Python-参数传递/" class="post-title">
-    Python 参数传递
-  </a>
-  <div class="date text-muted">Posted on 2016-12-20 15:53:16</div>
-</div>
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By LiuRongtao</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2010-12-28</span>
+            <span class="time">16:00:02</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
 
-      
-        <div class="archive-item">
-  <a href="/2016/11/19/集成多说/" class="post-title">
-    集成多说
-  </a>
-  <div class="date text-muted">Posted on 2016-11-19 23:22:13</div>
-</div>
+<a href="/categories/iteye/">iteye</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <a id="more"></a>
+<p><a href="http://fiftyk.iteye.com/admin/blogs/853511" target="_blank" rel="external">原文</a><br>最小化到托盘：<br>Outlook启动之后最小化的时候总是在任务栏上占一个位置，工作起来很碍事，如果最小化之后能隐藏在系统托盘之中就好了，可以通过修改注册表的方法来实现，如下：</p>
+<ul>
+<li><ol>
+<li>开始菜单 -&gt; 运行, 输入”regedit”并回车，打开注册表编辑器</li>
+</ol>
+</li>
+<li><ol>
+<li>依次打开 HKEY_CURRENT_USER\Software\ Microsoft\Office\11.0（如果是 Outlook XP，此处为10.0；如果是 Outlook2007，此处是 12.0）\Outlook\Preferences</li>
+</ol>
+</li>
+<li><ol>
+<li>在注册表的右边建立一个DWord的值（双字节值），名称为“MinToTray”，将值设成 1。刷新注册表。</li>
+</ol>
+</li>
+<li><ol>
+<li>启动 Outlook XP/2003/2007，系统托盘区已经有一个 Outlook2007 的小图标了，再进行最小化，会发现已经不在任务栏当中，自动隐藏到系统托盘当中了。</li>
+</ol>
+</li>
+</ul>
 
-      
-        <div class="archive-item">
-  <a href="/2016/11/18/宋大叔教音樂/" class="post-title">
-    宋大叔教音樂
-  </a>
-  <div class="date text-muted">Posted on 2016-11-18 23:10:19</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/11/18/TypeScript-模块解析策略/" class="post-title">
-    TypeScript 模块解析策略
-  </a>
-  <div class="date text-muted">Posted on 2016-11-18 13:39:39</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/11/15/Git-删除远程分支/" class="post-title">
-    Git 删除远程分支
-  </a>
-  <div class="date text-muted">Posted on 2016-11-15 15:22:32</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/11/09/异步异步/" class="post-title">
-    异步!异步!
-  </a>
-  <div class="date text-muted">Posted on 2016-11-09 18:00:16</div>
-</div>
-
-      
-        <div class="archive-item">
-  <a href="/2016/11/08/My-New-Post/" class="post-title">
-    标题设置
-  </a>
-  <div class="date text-muted">Posted on 2016-11-08 17:42:36</div>
-</div>
-
-      
-
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-          
-      </ul>
-    </div>
-  </div>
-</div>
+</article>
 
 
 
