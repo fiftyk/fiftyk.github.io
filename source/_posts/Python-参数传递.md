@@ -1,7 +1,8 @@
 ---
 title: Python 参数传递
-date: 2016-12-20 15:53:16
+date: 2010-11-22 10:53
 categories:
+- qzone
 tags:
 - python
 ---

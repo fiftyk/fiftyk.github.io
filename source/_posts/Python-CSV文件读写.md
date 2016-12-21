@@ -1,5 +1,5 @@
 ---
-title: Python-CSV文件读写
+title: Python CSV 文件读写
 date: 2013-01-08
 categories:
 - iteye
