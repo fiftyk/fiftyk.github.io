@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="LiuRongtao">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Chrome 扩展"/>
+  <meta property="og:title" content="使用 Javascript 获取国家统计局网站行政区划代码"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="fiftyk"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Chrome 扩展</p>
+          <p class="title">使用 Javascript 获取国家统计局网站行政区划代码</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -100,14 +100,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2012-12-01</span>
+            <span class="date">2016-12-30</span>
             <span class="time">17:19:26</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/qzone/">qzone</a>
+<a href="/categories/杂项/">杂项</a>
 </span>
           
         </div>
@@ -116,27 +116,17 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/javascript/">#javascript</a> <a class="tag" href="/tags/chrome/">#chrome</a>
+<a class="tag" href="/tags/javascript/">#javascript</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <a id="more"></a>
-<p><a href="http://user.qzone.qq.com/49363855/blog/1354347250" target="_blank" rel="external">原文地址</a></p>
-<p>再2分钟，11：30</p>
-<p>10分钟前，我给自己找了件事情做——开发一个Chrome插件——Google搜索结果页上的链接在新Tab直接打开,而不经Google重定向！因为经Google重定向基本上会被墙，所以…</p>
-<p>我正在下载”文明5:众神与国王”，现在它占用大量带宽，5分钟后下载完成，我开始阅读Chrome插件开发教程…</p>
-<p>11：44<br>网上搜索的教程不靠谱！果断搜索官方教程！</p>
-<p>11：50<br> 我还没找到官方教程！！！！</p>
-<p>11：51<br><a href="https://developer.chrome.com/extensions/getstarted.html" target="_blank" rel="external">https://developer.chrome.com/extensions/getstarted.html</a></p>
-<p>12：00<br>Hello World！</p>
-<p>13：09<br>有眉目了，遇到个问题jquery加载的问题…<br>任务暂停，去找孩他娘吃饭…</p>
-<p>15：10<br>吃了花溪王回来，13点时，Javascript文件引入顺序错误，导致调用”$”失败！<br>目标功能已经实现了！</p>
-<p>代码:</p>
-<p>Mission Completed！——Dirty&amp;Quick</p>
-
+          <p>使用 Javascript 获取国家统计局网站行政区划代码，并组织生成树状结构。<br><a id="more"></a></p>
+<p>项目需要需要一份中国的行政区划代码，以及上下级关系。数据源从国家统计局网站上的<a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201608/t20160809_1386477.html" target="_blank" rel="external">最新县及县以上行政区划代码（截止2015年9月30日）</a>获取。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">(function(results) &#123;</div><div class="line">  let els = $(&apos;p.MsoNormal&apos;);</div><div class="line">  //</div><div class="line">  for (let i = 0, size = els.length, prev; i &lt; size; i++) &#123;</div><div class="line">    let text = $(els[i]).text();</div><div class="line">    let ary = text.split(/\s+/);</div><div class="line">    let code = ary[0];</div><div class="line">    let name = ary[1];</div><div class="line">    let level = text.split(/\s/).length - 1;</div><div class="line">    //</div><div class="line">    let current = &#123;</div><div class="line">      code, name, level</div><div class="line">    &#125;;</div><div class="line">    //</div><div class="line">    if(!prev) &#123;</div><div class="line">      //</div><div class="line">    &#125; else if (current.level &gt; prev.level) &#123;</div><div class="line">      current.parent = prev;</div><div class="line">    &#125; else if (current.level &lt;= prev.level) &#123;</div><div class="line">      let parent = prev;</div><div class="line">      //</div><div class="line">      while(parent &amp;&amp; parent.level &gt;= current.level ) &#123;</div><div class="line">        parent = parent.parent;</div><div class="line">      &#125;</div><div class="line">      //</div><div class="line">      if(parent) &#123;</div><div class="line">        current.parent = parent;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    //</div><div class="line">    prev = current;</div><div class="line">    //</div><div class="line">    results.push(current);</div><div class="line">  &#125;</div><div class="line">&#125;)(window.results=[])</div></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
