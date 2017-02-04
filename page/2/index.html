@@ -1,445 +1,821 @@
+
 <!DOCTYPE html>
 <html>
-  <!-- Html Head Tag-->
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="LiuRongtao">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="fiftyk"/>
-  <meta property="og:description" content="" />
-  <meta property="og:site_name" content="fiftyk"/>
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://fiftyk.github.ioundefined"/>
+<head>
+  <meta charset="utf-8">
   
-    <link rel="alternate" href="/atom.xml" title="fiftyk" type="application/atom+xml">
+  <title>fiftyk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="fiftyk">
+<meta property="og:url" content="http://fiftyk.github.io/page/2/index.html">
+<meta property="og:site_name" content="fiftyk">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fiftyk">
+  
+    <link rel="alternative" href="/atom.xml" title="fiftyk" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-
-  <!-- Site Title -->
-  <title>fiftyk</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
-  <link rel="stylesheet" href="/css/style.light.css">
-
-  <!-- Google Analytics -->
-  
-
 </head>
-
-  <body>
-    <!-- Page Header -->
-
-
-<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">fiftyk</p>
-          <p class="subtitle"></p>
-        </div>
-        <div class="site-menu with-background-image">
-          <ul>
-            
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="https://github.com/fiftyk">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:fiftyk@qq.com">
-                  
-                  Email
-                  
-                </a>
-              </li>
-            
-          </ul>
-        </div>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">fiftyk</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="fiftyk.github.io">
+        </form>
       </div>
     </div>
   </div>
 </header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-Python-CSV文件读写" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/01/08/Python-CSV文件读写/" class="article-date">
+  <time datetime="2013-01-07T16:00:00.000Z" itemprop="datePublished">2013-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iteye/">iteye</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/01/08/Python-CSV文件读写/">Python CSV 文件读写</a>
+    </h1>
+  
 
-<!-- Home Page Post List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-        <div class="post-item-wrapper">
-  <a href="/2012/12/27/Cython/" class="post-title">
-      OS Mountain Lion 10.8.2 安装 Cython
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2012-12-27</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/iteye/">iteye</a>
-
-        
-      </div>
+        <p><a href="http://fiftyk.iteye.com/admin/blogs/1766530" target="_blank" rel="external">原文地址</a></p>
+<p>之前也曾使用过 python 处理过 csv 文件，就是普通的文本文件读写，不曾想到 Python 也内置了一个 csv 的库：</p>
+<p><a href="http://docs.python.org/release/2.5.4/lib/module-csv.html" target="_blank" rel="external">http://docs.python.org/release/2.5.4/lib/module-csv.html</a></p>
+<p>没有细看，有空再看:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">import csv</div><div class="line">reader = csv.reader(open(&quot;some.csv&quot;, &quot;rb&quot;))</div><div class="line">for row in reader:</div><div class="line">    print row</div><div class="line">reader = csv.reader(open(&quot;passwd&quot;, &quot;rb&quot;), delimiter=&apos;:&apos;, quoting=csv.QUOTE_NONE)</div><div class="line">for row in reader:</div><div class="line">    print row</div><div class="line">writer = csv.writer(open(&quot;some.csv&quot;, &quot;wb&quot;))</div><div class="line">writer.writerows(someiterable)</div><div class="line">csv.register_dialect(&apos;unixpwd&apos;, delimiter=&apos;:&apos;, quoting=csv.QUOTE_NONE)</div><div class="line">reader = csv.reader(open(&quot;passwd&quot;, &quot;rb&quot;), &apos;unixpwd&apos;)</div><div class="line">filename = &quot;some.csv&quot;</div><div class="line">reader = csv.reader(open(filename, &quot;rb&quot;))</div><div class="line">try:</div><div class="line">    for row in reader:</div><div class="line">        print row</div><div class="line">except csv.Error, e:</div><div class="line">    sys.exit(&apos;file %s, line %d: %s&apos; % (filename, reader.line_num, e))</div><div class="line">for row in csv.reader([&apos;one,two,three&apos;]):</div><div class="line">    print row</div></pre></td></tr></table></figure>
+      
     </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
+    <footer class="article-footer">
       
+        <a data-url="http://fiftyk.github.io/2013/01/08/Python-CSV文件读写/" data-id="ciyay7vt7000b5dqg4jfgh2sr" class="article-share-link" data-share="baidu" data-title="Python CSV 文件读写">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2013/01/08/Python-CSV文件读写/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="os-Cython" class="article article-type-os" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/12/27/Cython/" class="article-date">
+  <time datetime="2012-12-26T16:00:00.000Z" itemprop="datePublished">2012-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iteye/">iteye</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/12/27/Cython/">OS Mountain Lion 10.8.2 安装 Cython</a>
+    </h1>
+  
 
-<a class="tag" href="/tags/python/">python</a>
-
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://fiftyk.iteye.com/admin/blogs/1754733" target="_blank" rel="external">原文</a></p>
+<p>使用 Python 开发的程序，运行速度上不太满意，碰巧看到赖勇浩 CSDN 博客中翻译的 <a href="http://blog.csdn.net/gzlaiyonghao/article/details/4561611" target="_blank" rel="external">Cython 三分钟入门</a>。得空便开始着手尝试，半天未果。<br>问题一大堆，比如：</p>
+<ul>
+<li>OS 下设置环境变量；</li>
+<li>Clang（/klæŋ/）安装;</li>
+</ul>
+<p>OS 下终端里设置临时环境变量的方法比较容易：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:&apos;app/bin&apos;</div></pre></td></tr></table></figure>
+<p>OS设置永久环境变量，网上搜了一篇，没太搞明白，但起作用了：Mac 下设置环境变量</p>
+<p>编译 Clang 需要 GCC，GCC 我在 XCode 安装目录下找到了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/usr/bin</div></pre></td></tr></table></figure>
+<p>按照《结构化编译器前端 Clang介绍》折腾半天，最终也没能编译成功。</p>
+<p>回头再去XCode安装目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin</div></pre></td></tr></table></figure>
+<p>找到了，果断复制了 Clang 至：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/usr/bin</div></pre></td></tr></table></figure>
+<p>也不知道，合不合适，但终端里输入 Clang 终于有反应了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd Cython-0.17.3</div><div class="line">python setup.py build</div></pre></td></tr></table></figure>
+<p>阻力继续：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">running build_py</div><div class="line">running build_ext</div><div class="line">building &apos;Cython.Plex.Scanners&apos; extension</div><div class="line">clang -fno-strict-aliasing -fno-common -dynamic -g -Os -pipe -fno-common -fno-strict-aliasing -fwrapv -mno-fused-madd -DENABLE_DTRACE -DMACOSX -DNDEBUG -Wall -Wstrict-prototypes -Wshorten-64-to-32 -DNDEBUG -g -Os -Wall -Wstrict-prototypes -DENABLE_DTRACE -arch i386 -arch x86_64 -pipe -I/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -c Cython/Plex/Scanners.c -o build/temp.macosx-10.8-intel-2.7/Cython/Plex/Scanners.o</div><div class="line">clang: warning: argument unused during compilation: &apos;-mno-fused-madd&apos;</div><div class="line">Cython/Plex/Scanners.c:4:10: fatal error: &apos;Python.h&apos; file not found</div><div class="line">#include &quot;Python.h&quot;</div><div class="line">         ^</div><div class="line">1 error generated.</div><div class="line">error: command &apos;clang&apos; failed with exit status 1</div></pre></td></tr></table></figure>
+<p>stackoverflow 上有个最佳答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-dev</div></pre></td></tr></table></figure>
+<p>mac 里没有 apt-get 这个工具，傻眼。。。</p>
+<p>其实还在 Xcode 目录中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Python.framework/Versions/2.7/include</div></pre></td></tr></table></figure>
+<p>找到了“Python.h”,怎么让 <code>python setup.py build</code> 时知道呢？再傻眼。。。</p>
+<p>没有师傅指导。。。</p>
+<p>难免走弯路。。。</p>
+<p>会遇到些稀奇古怪的东西，完全搞不清状况。。。</p>
+<p>我看到了这篇文章：《Fatal Error：studio.h File Not Found》</p>
+<blockquote>
+<p>“Command Line Tools” 的 comment：</p>
+<p>“Before installing, note that from within Terminal you can use the XCRUN tool to launch compilers and other tools embedded within the Xcode application. Use the XCODE-SELECT tool to define which version of Xcode is active.  Type “man xcrun” from within Terminal to find out more.</p>
+<p>Downloading this package will install copies of the core command line tools and system headers into system folders, including the LLVM compiler, linker, and build tools.”</p>
+</blockquote>
+<p>再次打开终端：输入 gcc，输入 clang，就这么简单，绕这么大弯。</p>
+<p><code>python setup.py build</code> 有些警告</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo python setup.py install</div></pre></td></tr></table></figure>
+<p>结束！</p>
 
       
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2012/12/27/Cython/" data-id="ciyay7vsn00015dqgluwicy8x" class="article-share-link" data-share="baidu" data-title="OS Mountain Lion 10.8.2 安装 Cython">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2012/12/27/Cython/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python运算符重载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/12/18/Python运算符重载/" class="article-date">
+  <time datetime="2012-12-17T16:00:00.000Z" itemprop="datePublished">2012-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iteye/">iteye</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/12/18/Python运算符重载/">Python 运算符重载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><a href="http://fiftyk.iteye.com/admin/blogs/1749772" target="_blank" rel="external">原文地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Line:</div><div class="line">  def __init__(self,p1,p2):</div><div class="line">    self.start = p1</div><div class="line">    self.end = p2</div><div class="line"></div><div class="line">  def __sub__(self,p):</div><div class="line">    if isinstance(p,Point):</div><div class="line">      if p is self.start:</div><div class="line">        return self.end</div><div class="line">      if p is self.end:</div><div class="line">          return self.start</div><div class="line"></div><div class="line">class Point:</div><div class="line">  def __init__(self,x,y):</div><div class="line">    self.x = x</div><div class="line">    self.x = x</div><div class="line"></div><div class="line">  def __add__(self,p):</div><div class="line">    if isinstance(p,Point):</div><div class="line">      return Line(self,p)</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">  p1 = Point(1,2)</div><div class="line">  p2 = Point(2,3)</div><div class="line"></div><div class="line">  #两个点相加 通过__add__方法</div><div class="line">  line = p1 + p2 </div><div class="line">  print l</div><div class="line">  #&gt;&gt;&lt;__main__.Line instance at 0x02220738&gt;</div><div class="line">  #线减去一个点 通过__sub__方法</div><div class="line">  print line - p1 </div><div class="line">  #&gt;&gt;&lt;__main__.Point instance at 0x02220710&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2012/12/18/Python运算符重载/" data-id="ciyay7vth000m5dqg7r7zbpg0" class="article-share-link" data-share="baidu" data-title="Python 运算符重载">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2012/12/18/Python运算符重载/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Chrome-扩展" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/12/01/Chrome-扩展/" class="article-date">
+  <time datetime="2012-12-01T07:34:00.000Z" itemprop="datePublished">2012-12-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/qzone/">qzone</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/12/01/Chrome-扩展/">Chrome 扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><a href="http://user.qzone.qq.com/49363855/blog/1354347250" target="_blank" rel="external">原文地址</a></p>
+<p>再2分钟，11：30</p>
+<p>10分钟前，我给自己找了件事情做——开发一个Chrome插件——Google搜索结果页上的链接在新Tab直接打开,而不经Google重定向！因为经Google重定向基本上会被墙，所以…</p>
+<p>我正在下载”文明5:众神与国王”，现在它占用大量带宽，5分钟后下载完成，我开始阅读Chrome插件开发教程…</p>
+<p>11：44<br>网上搜索的教程不靠谱！果断搜索官方教程！</p>
+<p>11：50<br> 我还没找到官方教程！！！！</p>
+<p>11：51<br><a href="https://developer.chrome.com/extensions/getstarted.html" target="_blank" rel="external">https://developer.chrome.com/extensions/getstarted.html</a></p>
+<p>12：00<br>Hello World！</p>
+<p>13：09<br>有眉目了，遇到个问题jquery加载的问题…<br>任务暂停，去找孩他娘吃饭…</p>
+<p>15：10<br>吃了花溪王回来，13点时，Javascript文件引入顺序错误，导致调用”$”失败！<br>目标功能已经实现了！</p>
+<p>代码:</p>
+<p>Mission Completed！——Dirty&amp;Quick</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2012/12/01/Chrome-扩展/" data-id="ciyay7vsi00005dqgym3bh2ni" class="article-share-link" data-share="baidu" data-title="Chrome 扩展">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2012/12/01/Chrome-扩展/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/">chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python初始化多维数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/10/08/Python初始化多维数组/" class="article-date">
+  <time datetime="2012-10-07T16:00:00.000Z" itemprop="datePublished">2012-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iteye/">iteye</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/08/Python初始化多维数组/">Python 初始化多维数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><a href="http://fiftyk.iteye.com/admin/blogs/1693782" target="_blank" rel="external">原文地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#方法一</div><div class="line">twoD = [[for col in range(5) for row in range(3)]]</div><div class="line">#&gt;&gt;[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]</div><div class="line">twoD[0][0] = 1</div><div class="line">#&gt;&gt;[[0, 1, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]</div><div class="line">twoD[1] = [1]</div><div class="line">#&gt;&gt;[[0, 1, 0, 0, 0], [1], [0, 0, 0, 0, 0]]</div><div class="line"></div><div class="line"></div><div class="line">#方法2</div><div class="line">twoD = [[0] * 5] * 3</div><div class="line">#&gt;&gt;[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]</div><div class="line">twoD[0][0] = 1</div><div class="line">#&gt;&gt;[[1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]]</div><div class="line">twoD[1] = [1]</div><div class="line">#&gt;&gt;[[1, 0, 0, 0, 0], [1], [1, 0, 0, 0, 0]]</div></pre></td></tr></table></figure>
+<p>参考地址: <a href="http://www.jb51.net/article/15716.htm" target="_blank" rel="external">http://www.jb51.net/article/15716.htm</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2012/10/08/Python初始化多维数组/" data-id="ciyay7vtf000h5dqgbxgiqvsc" class="article-share-link" data-share="baidu" data-title="Python 初始化多维数组">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2012/10/08/Python初始化多维数组/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Outlook最小化至系统托盘" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2010/12/28/Outlook最小化至系统托盘/" class="article-date">
+  <time datetime="2010-12-27T16:00:00.000Z" itemprop="datePublished">2010-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iteye/">iteye</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/12/28/Outlook最小化至系统托盘/">Outlook 最小化至系统托盘</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><a href="http://fiftyk.iteye.com/admin/blogs/853511" target="_blank" rel="external">原文</a><br>最小化到托盘：<br>Outlook启动之后最小化的时候总是在任务栏上占一个位置，工作起来很碍事，如果最小化之后能隐藏在系统托盘之中就好了，可以通过修改注册表的方法来实现，如下：</p>
+<ul>
+<li><ol>
+<li>开始菜单 -&gt; 运行, 输入”regedit”并回车，打开注册表编辑器</li>
+</ol>
+</li>
+<li><ol>
+<li>依次打开 HKEY_CURRENT_USER\Software\ Microsoft\Office\11.0（如果是 Outlook XP，此处为10.0；如果是 Outlook2007，此处是 12.0）\Outlook\Preferences</li>
+</ol>
+</li>
+<li><ol>
+<li>在注册表的右边建立一个DWord的值（双字节值），名称为“MinToTray”，将值设成 1。刷新注册表。</li>
+</ol>
+</li>
+<li><ol>
+<li>启动 Outlook XP/2003/2007，系统托盘区已经有一个 Outlook2007 的小图标了，再进行最小化，会发现已经不在任务栏当中，自动隐藏到系统托盘当中了。</li>
+</ol>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2010/12/28/Outlook最小化至系统托盘/" data-id="ciyay7vt100095dqg5lk5e0rt" class="article-share-link" data-share="baidu" data-title="Outlook 最小化至系统托盘">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2010/12/28/Outlook最小化至系统托盘/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js替换字符串指定位置字符" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2010/12/20/js替换字符串指定位置字符/" class="article-date">
+  <time datetime="2010-12-19T16:00:00.000Z" itemprop="datePublished">2010-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iteye/">iteye</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/12/20/js替换字符串指定位置字符/">javascript 替换字符串指定位置字符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><a href="http://fiftyk.iteye.com/admin/blogs/847232" target="_blank" rel="external">原文地址</a></p>
+<p>今天遇到这个问题,首先的反应是用正则表达式,但不熟悉,pass掉了,又想到截断字符串,觉得也不好,最后想到使用循环,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">String.prototype.replaceAt = function(index,ch)&#123;</div><div class="line">    var newStr = &quot;&quot;;</div><div class="line">    for(var i in this)&#123;</div><div class="line">        if(i == index)&#123;</div><div class="line">            newStr += ch;</div><div class="line">        &#125;</div><div class="line">        if(typeof(this[i]) == &quot;string&quot;)&#123;</div><div class="line">            newStr += this[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return newStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>javascript 真强大,感觉应该还有更好的办法,一时没想起来,有路过的大侠,希望能给点建议!谢谢了.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2010/12/20/js替换字符串指定位置字符/" data-id="ciyay7vtp00115dqg53v9ojpq" class="article-share-link" data-share="baidu" data-title="javascript 替换字符串指定位置字符">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2010/12/20/js替换字符串指定位置字符/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python-参数传递" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2010/11/22/Python-参数传递/" class="article-date">
+  <time datetime="2010-11-22T02:53:00.000Z" itemprop="datePublished">2010-11-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/qzone/">qzone</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/11/22/Python-参数传递/">Python 参数传递</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def a(b,c):</div><div class="line">    print b,c</div><div class="line">a(1,2)</div><div class="line">a(*[1,2])</div><div class="line">a(**&#123;&apos;b&apos;:1,&apos;c&apos;:2&#125;)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2010/11/22/Python-参数传递/" data-id="ciyay7vtc000e5dqgexeavm9c" class="article-share-link" data-share="baidu" data-title="Python 参数传递">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2010/11/22/Python-参数传递/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-空间数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2010/10/11/空间数据库/" class="article-date">
+  <time datetime="2010-10-11T02:40:10.000Z" itemprop="datePublished">2010-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/douban/">douban</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/10/11/空间数据库/">空间数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><a href="https://www.douban.com/note/94799143/" target="_blank" rel="external">原文地址</a></p>
+<p>看到 OracleSptial 之前,我才知道一些空间分析计算早已被做进了数据库.一条 sql 语句就可以计算两点之间的距离,一个商店2公里范围之内有多少客户…</p>
+<p>我曾自己写了求折线平行线,裁剪 polyline 的算法,当时我也知道肯定有这样的轮子呢,但不知道在哪里,或者不知道怎么用.</p>
+<p>最近可能会有最短路径的问题,断断续续看了一些 A* 算法以及 Dijkstra 算法,钻研的精神不知道那里去了,始终没有入门,</p>
+<p>上周六又看了一天 PostGIS, Spatialite 的文章,他们和 Oracle Spatial 类似, Spatialite 提供了 network 分析的<br>工具,其中最短路径的计算,它用的就是 Dijkstra 算法.</p>
+<p>很可惜, PostGIS, Spatialite 连安装我都没有搞定,</p>
+<p>之前看到过一遍文章,说为什么做了 3 年程序员,有些人还是感觉有点茫然.文章作者给出了原因:没有总结!有同感,最近脑子感觉一团浆糊.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2010/10/11/空间数据库/" data-id="ciyay7vtv00185dqgvfyqj2xb" class="article-share-link" data-share="baidu" data-title="空间数据库">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2010/10/11/空间数据库/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gis/">gis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-as-无效的过程调用或参数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2010/07/16/as-无效的过程调用或参数/" class="article-date">
+  <time datetime="2010-07-16T05:41:14.000Z" itemprop="datePublished">2010-07-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/douban/">douban</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2010/07/16/as-无效的过程调用或参数/">无效的过程调用或参数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><a href="https://www.douban.com/note/80888634/" target="_blank" rel="external">原文地址</a></p>
+<p>我将 actionscript 中的一个名为 dir 的方法,通过 ExternalInterface.addCallback(js_function_name,as_function) 开放给 JavaScript 调用, FireFox 下没有错误，IE8 下却报错,但不影响其程序其他部分运行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/" data-id="ciyay7vtl000u5dqgjixeqfq9" class="article-share-link" data-share="baidu" data-title="无效的过程调用或参数">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/actionscript/">actionscript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/douban/">douban</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iteye/">iteye</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/qzone/">qzone</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/吐槽/">吐槽</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站建设/">网站建设</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/音乐/">音乐</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
-</div>
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2012/12/18/Python运算符重载/" class="post-title">
-      Python 运算符重载
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2012-12-18</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/iteye/">iteye</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/python/">python</a>
-
-
-      
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/actionscript/">actionscript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gis/">gis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayers/">openlayers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简谱/">简谱</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
-</div>
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2012/12/01/Chrome-扩展/" class="post-title">
-      Chrome 扩展
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2012-12-01</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/qzone/">qzone</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/javascript/">javascript</a> <a class="tag" href="/tags/chrome/">chrome</a>
-
-
-      
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/actionscript/" style="font-size: 10px;">actionscript</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/gis/" style="font-size: 13.33px;">gis</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openlayers/" style="font-size: 10px;">openlayers</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/简谱/" style="font-size: 10px;">简谱</a>
     </div>
   </div>
-</div>
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2012/10/08/Python初始化多维数组/" class="post-title">
-      Python 初始化多维数组
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2012-10-08</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/iteye/">iteye</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/python/">python</a>
-
-
-      
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">十二月 2010</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">十一月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">十月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">七月 2010</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
-</div>
 
-      
-        <div class="post-item-wrapper">
-  <a href="/2010/12/28/Outlook最小化至系统托盘/" class="post-title">
-      Outlook 最小化至系统托盘
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2010-12-28</div>
-      <div class="categories">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
         
-          
-
-<a href="/categories/iteye/">iteye</a>
-
+          <li>
+            <a href="/2017/02/04/es6-module/">ES6 模块加载加载机制</a>
+          </li>
         
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        <div class="untagged">Untagged</div>
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2010/12/20/js替换字符串指定位置字符/" class="post-title">
-      javascript 替换字符串指定位置字符
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2010-12-20</div>
-      <div class="categories">
+          <li>
+            <a href="/2017/01/24/letsencrypt-certificate/">Let&#39;s Encrypt 证书申请</a>
+          </li>
         
-          
-
-<a href="/categories/iteye/">iteye</a>
-
+          <li>
+            <a href="/2016/12/30/use-javascript-get-china-districts-code/">使用 Javascript 获取国家统计局网站行政区划代码</a>
+          </li>
         
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
+          <li>
+            <a href="/2016/12/21/精通-css-学习-01/">《 精通 CSS 》 学习（一）</a>
+          </li>
         
-
-<a class="tag" href="/tags/javascript/">javascript</a>
-
-
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2010/11/22/Python-参数传递/" class="post-title">
-      Python 参数传递
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2010-11-22</div>
-      <div class="categories">
+          <li>
+            <a href="/2016/11/19/集成多说/">集成多说</a>
+          </li>
         
-          
-
-<a href="/categories/qzone/">qzone</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/python/">python</a>
-
-
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2010/10/11/空间数据库/" class="post-title">
-      空间数据库
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2010-10-11</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/douban/">douban</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/gis/">gis</a>
-
-
-      
-    </div>
-  </div>
-</div>
-
-      
-        <div class="post-item-wrapper">
-  <a href="/2010/07/16/as-无效的过程调用或参数/" class="post-title">
-      无效的过程调用或参数
-  </a>
-  <div class="post-excerpt">
-    <!-- Post Date and Categories -->
-    <div class="date-and-category">
-      <div class="date">2010-07-16</div>
-      <div class="categories">
-        
-          
-
-<a href="/categories/douban/">douban</a>
-
-        
-      </div>
-    </div>
-    <!-- Post Excerpt -->
-    <div class="excerpt typo">暂无文章摘要</div>
-    <!-- Post Tags -->
-    <div class="tags">
-      
-        
-
-<a class="tag" href="/tags/actionscript/">actionscript</a>
-
-
-      
-    </div>
-  </div>
-</div>
-
-      
-    </div>
-  </div>
-</div>
-
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-              <li class="previous">
-                <a href="/">
-                  <span class="symbol-left">&lt;</span>
-                  <span>上一页</span>
-                </a>
-              </li>
-          
-          
       </ul>
     </div>
   </div>
-</div>
 
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">博客主题作者</a>
+          </li>
+        
+          <li>
+            <a href="https://luopan88.com" target="_blank">罗盘智慧差旅</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
-
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
-          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
-        </p>
-      </div>
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 LiuRongtao<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
     </div>
   </div>
 </footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"fiftyk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
 
 
-    <!-- After Footer Scripts -->
-<script src="/js/highlight.pack.js"></script>
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
-  });
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
-  </body>
-</html>
+<!-- 百度分享 end -->
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
