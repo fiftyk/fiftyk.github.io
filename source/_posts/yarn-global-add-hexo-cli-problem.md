@@ -7,7 +7,7 @@ tags:
 - hexo
 - yarn
 ---
-
+yarn global add 的 --prefix 参数
 <!-- more -->
 
 ## 问题描述
