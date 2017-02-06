@@ -6,22 +6,16 @@
   
   <title>yarn global add hexo-cli 的问题 | fiftyk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述npm 的全局安装目录在我机器的 /usr/local/lib/node_modules/ 目录。我手动删除了该目录下的 hexo-cli ，通过执行 yarn global add hexo-cli 后期望能重新安装 hexo-cli，但却没有如愿，终端执行 hexo 时：
-12&amp;gt; hexozsh: command not found: hexo
-探究实际上执行 yarn glo">
+  <meta name="description" content="yarn global add 的 –prefix 参数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yarn global add hexo-cli 的问题">
 <meta property="og:url" content="http://fiftyk.github.io/2017/02/06/yarn-global-add-hexo-cli-problem/index.html">
 <meta property="og:site_name" content="fiftyk">
-<meta property="og:description" content="问题描述npm 的全局安装目录在我机器的 /usr/local/lib/node_modules/ 目录。我手动删除了该目录下的 hexo-cli ，通过执行 yarn global add hexo-cli 后期望能重新安装 hexo-cli，但却没有如愿，终端执行 hexo 时：
-12&amp;gt; hexozsh: command not found: hexo
-探究实际上执行 yarn glo">
-<meta property="og:updated_time" content="2017-02-06T02:56:40.000Z">
+<meta property="og:description" content="yarn global add 的 –prefix 参数">
+<meta property="og:updated_time" content="2017-02-06T03:01:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yarn global add hexo-cli 的问题">
-<meta name="twitter:description" content="问题描述npm 的全局安装目录在我机器的 /usr/local/lib/node_modules/ 目录。我手动删除了该目录下的 hexo-cli ，通过执行 yarn global add hexo-cli 后期望能重新安装 hexo-cli，但却没有如愿，终端执行 hexo 时：
-12&amp;gt; hexozsh: command not found: hexo
-探究实际上执行 yarn glo">
+<meta name="twitter:description" content="yarn global add 的 –prefix 参数">
   
     <link rel="alternative" href="/atom.xml" title="fiftyk" type="application/atom+xml">
   
@@ -99,7 +93,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
+        <p>yarn global add 的 –prefix 参数<br><a id="more"></a></p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><em>npm</em> 的全局安装目录在我机器的 <code>/usr/local/lib/node_modules/</code> 目录。我手动删除了该目录下的 <em>hexo-cli</em> ，通过执行 <code>yarn global add hexo-cli</code> 后期望能重新安装 <em>hexo-cli</em>，但却没有如愿，终端执行 <code>hexo</code> 时：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; hexo</div><div class="line">zsh: <span class="built_in">command</span> not found: hexo</div></pre></td></tr></table></figure>
 <h2 id="探究"><a href="#探究" class="headerlink" title="探究"></a>探究</h2><p>实际上执行 <code>yarn global add hexo-cli</code> 时至少发生了以下几件事，也许还有其它但我还不知道：</p>

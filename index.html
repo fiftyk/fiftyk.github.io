@@ -91,22 +91,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><em>npm</em> 的全局安装目录在我机器的 <code>/usr/local/lib/node_modules/</code> 目录。我手动删除了该目录下的 <em>hexo-cli</em> ，通过执行 <code>yarn global add hexo-cli</code> 后期望能重新安装 <em>hexo-cli</em>，但却没有如愿，终端执行 <code>hexo</code> 时：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; hexo</div><div class="line">zsh: <span class="built_in">command</span> not found: hexo</div></pre></td></tr></table></figure>
-<h2 id="探究"><a href="#探究" class="headerlink" title="探究"></a>探究</h2><p>实际上执行 <code>yarn global add hexo-cli</code> 时至少发生了以下几件事，也许还有其它但我还不知道：</p>
-<ul>
-<li>首先 <em>hexo-cli</em> 安装到了 <code>/Users/liurtao/.config/yarn/global/node_modules/</code> 目录下，而不是 <code>/usr/local/lib/node_modules/</code> 目录；</li>
-<li>另外在 <code>/usr/local/Cellar/node/7.4.0/bin/</code> 目录里创建了指向 <code>/Users/[username]/.config/yarn/global/node_modules/hexo-cli/bin/hexo</code> 的链接；</li>
-</ul>
-<p>问题找到了，我机器的 PATH 路径并不包含 <code>/usr/local/Cellar/node/7.4.0/bin/</code> 也不包含 <code>/Users/[username]/.config/yarn/global/node_modules/hexo-cli/bin/</code>，所以在终端输入 <code>hexo</code> 时无法找到。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>根据官方文档 <a href="https://yarnpkg.com/lang/en/docs/cli/global/" target="_blank" rel="external">关于 <em>yarn global</em> 的描述</a> 可知，可以通过 <code>--prefix</code> 参数指定链接创建的目标路径。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 删除原先安装</span></div><div class="line">yarn global remove hexo-cli</div><div class="line"><span class="comment"># 重新安装</span></div><div class="line">yarn global add hexo-cli --prefix /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
-<p>执行上述代码后，我们会发现在 <code>/usr/local/bin/</code> 目录里创建了指向 <code>/Users/[username]/.config/yarn/global/node_modules/hexo-cli/bin/hexo</code> 的链接；</p>
-<p>此时，再从终端执行 <code>hexo</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; hexo</div><div class="line">Usage: hexo &lt;command&gt;</div><div class="line"></div><div class="line">Commands:</div><div class="line">  help     Get help on a command.</div><div class="line">  init     Create a new Hexo folder.</div><div class="line">  version  Display version information.</div><div class="line">...</div></pre></td></tr></table></figure>
-<p>Done!</p>
-
+        <p>yarn global add 的 –prefix 参数<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/02/06/yarn-global-add-hexo-cli-problem/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
