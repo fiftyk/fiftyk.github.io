@@ -65,6 +65,69 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-yarn-global-add-hexo-cli-problem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/06/yarn-global-add-hexo-cli-problem/" class="article-date">
+  <time datetime="2017-02-06T01:32:33.000Z" itemprop="datePublished">2017-02-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/06/yarn-global-add-hexo-cli-problem/">yarn global add hexo-cli 的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><em>npm</em> 的全局安装目录在我机器的 <code>/usr/local/lib/node_modules/</code> 目录。我手动删除了该目录下的 <em>hexo-cli</em> ，通过执行 <code>yarn global add hexo-cli</code> 后期望能重新安装 <em>hexo-cli</em>，但却没有如愿，终端执行 <code>hexo</code> 时：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; hexo</div><div class="line">zsh: <span class="built_in">command</span> not found: hexo</div></pre></td></tr></table></figure>
+<h2 id="探究"><a href="#探究" class="headerlink" title="探究"></a>探究</h2><p>实际上执行 <code>yarn global add hexo-cli</code> 时至少发生了以下几件事，也许还有其它但我还不知道：</p>
+<ul>
+<li>首先 <em>hexo-cli</em> 安装到了 <code>/Users/liurtao/.config/yarn/global/node_modules/</code> 目录下，而不是 <code>/usr/local/lib/node_modules/</code> 目录；</li>
+<li>另外在 <code>/usr/local/Cellar/node/7.4.0/bin/</code> 目录里创建了指向 <code>/Users/[username]/.config/yarn/global/node_modules/hexo-cli/bin/hexo</code> 的链接；</li>
+</ul>
+<p>问题找到了，我机器的 PATH 路径并不包含 <code>/usr/local/Cellar/node/7.4.0/bin/</code> 也不包含 <code>/Users/[username]/.config/yarn/global/node_modules/hexo-cli/bin/</code>，所以在终端输入 <code>hexo</code> 时无法找到。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>根据官方文档 <a href="https://yarnpkg.com/lang/en/docs/cli/global/" target="_blank" rel="external">关于 <em>yarn global</em> 的描述</a> 可知，可以通过 <code>--prefix</code> 参数指定链接创建的目标路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 删除原先安装</span></div><div class="line">yarn global remove hexo-cli</div><div class="line"><span class="comment"># 重新安装</span></div><div class="line">yarn global add hexo-cli --prefix /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
+<p>执行上述代码后，我们会发现在 <code>/usr/local/bin/</code> 目录里创建了指向 <code>/Users/[username]/.config/yarn/global/node_modules/hexo-cli/bin/hexo</code> 的链接；</p>
+<p>此时，再从终端执行 <code>hexo</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; hexo</div><div class="line">Usage: hexo &lt;command&gt;</div><div class="line"></div><div class="line">Commands:</div><div class="line">  help     Get help on a command.</div><div class="line">  init     Create a new Hexo folder.</div><div class="line">  version  Display version information.</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>Done!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2017/02/06/yarn-global-add-hexo-cli-problem/" data-id="ciyticn7c0015qsqg3cx1ob8r" class="article-share-link">分享到</a>
+      
+
+      
+        <a href="http://fiftyk.github.io/2017/02/06/yarn-global-add-hexo-cli-problem/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yarn/">yarn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-rxjs-get-start" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/04/rxjs-get-start/" class="article-date">
@@ -101,7 +164,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2017/02/04/rxjs-get-start/" data-id="ciyqz86hx00159eqgn8h1rvt8" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2017/02/04/rxjs-get-start/" data-id="ciyticn7e0017qsqgixdb93ex" class="article-share-link">分享到</a>
       
 
       
@@ -154,7 +217,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2017/02/04/es6-module/" data-id="ciyqz86hr000u9eqg51no2ox3" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2017/02/04/es6-module/" data-id="ciyticn73000pqsqgka7syypt" class="article-share-link">分享到</a>
       
 
       
@@ -207,7 +270,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2017/01/24/letsencrypt-certificate/" data-id="ciyqz86hu00119eqg8z7wr3z1" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2017/01/24/letsencrypt-certificate/" data-id="ciyticn7a0010qsqg1fkpe25d" class="article-share-link">分享到</a>
       
 
       
@@ -260,7 +323,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2016/12/30/use-javascript-get-china-districts-code/" data-id="ciyqz86hz00189eqg137opx6b" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2016/12/30/use-javascript-get-china-districts-code/" data-id="ciyticn7j001aqsqgy6ovm73x" class="article-share-link">分享到</a>
       
 
       
@@ -313,7 +376,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2016/12/21/精通-css-学习-01/" data-id="ciyqz86ib001m9eqgerbpuvd5" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2016/12/21/精通-css-学习-01/" data-id="ciyticn7u001qqsqgtrfiwbzm" class="article-share-link">分享到</a>
       
 
       
@@ -366,7 +429,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2016/11/19/集成多说/" data-id="ciyqz86ih001r9eqgw3gk44uk" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2016/11/19/集成多说/" data-id="ciyticn7v001uqsqghkr364yw" class="article-share-link">分享到</a>
       
 
       
@@ -417,7 +480,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2016/11/18/宋大叔教音樂/" data-id="ciyqz86i2001b9eqgr114k97o" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2016/11/18/宋大叔教音樂/" data-id="ciyticn7l001eqsqggeht7p2d" class="article-share-link">分享到</a>
       
 
       
@@ -470,7 +533,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2016/11/18/TypeScript-模块解析策略/" data-id="ciyqz86hm000m9eqgpko3lbr0" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2016/11/18/TypeScript-模块解析策略/" data-id="ciyticn71000mqsqgcerkrt41" class="article-share-link">分享到</a>
       
 
       
@@ -523,7 +586,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2016/11/15/Git-删除远程分支/" data-id="ciyqz86h100049eqg5tqxmca2" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2016/11/15/Git-删除远程分支/" data-id="ciyticn6f0004qsqg81saf8s3" class="article-share-link">分享到</a>
       
 
       
@@ -532,59 +595,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-异步异步" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/09/异步异步/" class="article-date">
-  <time datetime="2016-11-09T10:00:16.000Z" itemprop="datePublished">2016-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/吐槽/">吐槽</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/09/异步异步/">异步!异步!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>感觉有点驾驭不了 Javascript 异步调用……<br>
-        
-          <p class="article-more-link">
-            <a href="/2016/11/09/异步异步/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://fiftyk.github.io/2016/11/09/异步异步/" data-id="ciyqz86i4001e9eqgp8svxoln" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://fiftyk.github.io/2016/11/09/异步异步/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
@@ -606,7 +616,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/douban/">douban</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iteye/">iteye</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/qzone/">qzone</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/吐槽/">吐槽</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站建设/">网站建设</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/音乐/">音乐</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/douban/">douban</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iteye/">iteye</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/qzone/">qzone</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/吐槽/">吐槽</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站建设/">网站建设</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/音乐/">音乐</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -615,7 +625,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/actionscript/">actionscript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gis/">gis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayers/">openlayers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/">rxjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简谱/">简谱</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/actionscript/">actionscript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gis/">gis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayers/">openlayers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/">rxjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yarn/">yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简谱/">简谱</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -624,7 +634,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/actionscript/" style="font-size: 10px;">actionscript</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/gis/" style="font-size: 13.33px;">gis</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openlayers/" style="font-size: 10px;">openlayers</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/简谱/" style="font-size: 10px;">简谱</a>
+      <a href="/tags/actionscript/" style="font-size: 10px;">actionscript</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/gis/" style="font-size: 13.33px;">gis</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openlayers/" style="font-size: 10px;">openlayers</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a> <a href="/tags/简谱/" style="font-size: 10px;">简谱</a>
     </div>
   </div>
 
@@ -633,7 +643,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">十二月 2010</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">十一月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">十月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">七月 2010</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">十二月 2010</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">十一月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">十月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">七月 2010</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -643,6 +653,10 @@
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/06/yarn-global-add-hexo-cli-problem/">yarn global add hexo-cli 的问题</a>
+          </li>
         
           <li>
             <a href="/2017/02/04/rxjs-get-start/">RxJS 学习笔记</a>
@@ -658,10 +672,6 @@
         
           <li>
             <a href="/2016/12/30/use-javascript-get-china-districts-code/">使用 Javascript 获取国家统计局网站行政区划代码</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/21/精通-css-学习-01/">《 精通 CSS 》 学习（一）</a>
           </li>
         
       </ul>
