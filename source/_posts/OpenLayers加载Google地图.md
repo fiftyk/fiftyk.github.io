@@ -16,7 +16,7 @@ tags:
 原先发在了 OpenLayers 中文网,交流的人很少，所有又发到这里。
 之前看了一些继承自 TileCache 的实现,这里也发一下自己的实现,继承自 XYZ 类。接触 OpenLayers 时间不长,没有实际项目应用经验,有理解不清的地方还望各位多多指教,谢谢！
 
-```
+```javascript
 OpenLayers.Layer.GMapLayer = OpenLayers.Class(OpenLayers.Layer.XYZ, {
     wrapDateLine:true,
     sphericalMercator:true,

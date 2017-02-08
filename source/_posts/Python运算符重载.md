@@ -10,7 +10,7 @@ tags:
 
 [原文地址](http://fiftyk.iteye.com/admin/blogs/1749772)
 
-```
+```python
 class Line:
   def __init__(self,p1,p2):
     self.start = p1

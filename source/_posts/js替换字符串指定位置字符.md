@@ -12,7 +12,7 @@ tags:
 
 今天遇到这个问题,首先的反应是用正则表达式,但不熟悉,pass掉了,又想到截断字符串,觉得也不好,最后想到使用循环,代码如下:
 
-```
+```javascript
 String.prototype.replaceAt = function(index,ch){
     var newStr = "";
     for(var i in this){

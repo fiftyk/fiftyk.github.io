@@ -18,7 +18,7 @@ tags:
 
 OS 下终端里设置临时环境变量的方法比较容易：
 
-```
+```bash
 export PATH=$PATH:'app/bin'
 ```
 
@@ -27,7 +27,7 @@ OS设置永久环境变量，网上搜了一篇，没太搞明白，但起作用
 编译 Clang 需要 GCC，GCC 我在 XCode 安装目录下找到了：
 
 
-```
+```bash
 /Applications/Xcode.app/Contents/Developer/usr/bin
 ```
 
@@ -35,27 +35,27 @@ OS设置永久环境变量，网上搜了一篇，没太搞明白，但起作用
  
 回头再去XCode安装目录：
 
-```
+```bash
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 ```
 
 
 找到了，果断复制了 Clang 至：
 
-```
+```bash
 /Applications/Xcode.app/Contents/Developer/usr/bin
 ```
 
 也不知道，合不合适，但终端里输入 Clang 终于有反应了
 
-``` 
+``` bash
 cd Cython-0.17.3
 python setup.py build
 ```
 
 阻力继续：
 
-```
+```bash
 running build_py
 running build_ext
 building 'Cython.Plex.Scanners' extension
@@ -78,7 +78,7 @@ mac 里没有 apt-get 这个工具，傻眼。。。
  
 其实还在 Xcode 目录中:
 
-```
+```bash
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Python.framework/Versions/2.7/include
 ```
 

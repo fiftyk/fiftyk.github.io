@@ -15,7 +15,7 @@ tags:
 
 [fiftyk/districts-convert.js](https://gist.github.com/fiftyk/71a3b5949511cf6320939e7115aa6645)
 
-```
+```javascript
 (function(results) {
   let els = $('p.MsoNormal');
   //

@@ -10,7 +10,7 @@ tags:
 
 [原文地址](http://fiftyk.iteye.com/admin/blogs/1693782)
 
-```
+```python
 #方法一
 twoD = [[for col in range(5) for row in range(3)]]
 #>>[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]

@@ -15,7 +15,7 @@ tags:
  
 没有细看，有空再看:
 
-```
+```python
 import csv
 reader = csv.reader(open("some.csv", "rb"))
 for row in reader:

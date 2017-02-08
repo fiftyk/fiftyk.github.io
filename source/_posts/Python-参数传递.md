@@ -9,7 +9,7 @@ tags:
 
 <!-- more -->
 
-```
+```python
 def a(b,c):
     print b,c
 a(1,2)
