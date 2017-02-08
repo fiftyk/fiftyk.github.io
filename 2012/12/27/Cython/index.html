@@ -13,8 +13,8 @@ OS 下设置环境变量；
 Clang（/klæŋ/）安装;
 
 OS 下终端里设置临时环境变量的方法比较容易：
-1export PATH=$PATH:&amp;apos;app/bin&amp;apos;
-OS设置永久环境变量，网上搜了一篇，没">
+1export PATH=$PATH:&apos;app/bin&apos;
+OS设置永久环境变量，网上搜了一篇，没太搞明白，但起作用了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OS Mountain Lion 10.8.2 安装 Cython">
 <meta property="og:url" content="http://fiftyk.github.io/2012/12/27/Cython/index.html">
@@ -26,9 +26,9 @@ OS 下设置环境变量；
 Clang（/klæŋ/）安装;
 
 OS 下终端里设置临时环境变量的方法比较容易：
-1export PATH=$PATH:&amp;apos;app/bin&amp;apos;
-OS设置永久环境变量，网上搜了一篇，没">
-<meta property="og:updated_time" content="2016-12-20T07:25:46.000Z">
+1export PATH=$PATH:&apos;app/bin&apos;
+OS设置永久环境变量，网上搜了一篇，没太搞明白，但起作用了">
+<meta property="og:updated_time" content="2017-02-08T06:07:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OS Mountain Lion 10.8.2 安装 Cython">
 <meta name="twitter:description" content="原文
@@ -38,8 +38,8 @@ OS 下设置环境变量；
 Clang（/klæŋ/）安装;
 
 OS 下终端里设置临时环境变量的方法比较容易：
-1export PATH=$PATH:&amp;apos;app/bin&amp;apos;
-OS设置永久环境变量，网上搜了一篇，没">
+1export PATH=$PATH:&apos;app/bin&apos;
+OS设置永久环境变量，网上搜了一篇，没太搞明白，但起作用了">
   
     <link rel="alternative" href="/atom.xml" title="fiftyk" type="application/atom+xml">
   
@@ -124,24 +124,24 @@ OS设置永久环境变量，网上搜了一篇，没">
 <li>Clang（/klæŋ/）安装;</li>
 </ul>
 <p>OS 下终端里设置临时环境变量的方法比较容易：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:&apos;app/bin&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="string">'app/bin'</span></div></pre></td></tr></table></figure>
 <p>OS设置永久环境变量，网上搜了一篇，没太搞明白，但起作用了：Mac 下设置环境变量</p>
 <p>编译 Clang 需要 GCC，GCC 我在 XCode 安装目录下找到了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/usr/bin</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/usr/bin</div></pre></td></tr></table></figure>
 <p>按照《结构化编译器前端 Clang介绍》折腾半天，最终也没能编译成功。</p>
 <p>回头再去XCode安装目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin</div></pre></td></tr></table></figure>
 <p>找到了，果断复制了 Clang 至：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/usr/bin</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/usr/bin</div></pre></td></tr></table></figure>
 <p>也不知道，合不合适，但终端里输入 Clang 终于有反应了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd Cython-0.17.3</div><div class="line">python setup.py build</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> Cython-0.17.3</div><div class="line">python setup.py build</div></pre></td></tr></table></figure>
 <p>阻力继续：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">running build_py</div><div class="line">running build_ext</div><div class="line">building &apos;Cython.Plex.Scanners&apos; extension</div><div class="line">clang -fno-strict-aliasing -fno-common -dynamic -g -Os -pipe -fno-common -fno-strict-aliasing -fwrapv -mno-fused-madd -DENABLE_DTRACE -DMACOSX -DNDEBUG -Wall -Wstrict-prototypes -Wshorten-64-to-32 -DNDEBUG -g -Os -Wall -Wstrict-prototypes -DENABLE_DTRACE -arch i386 -arch x86_64 -pipe -I/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -c Cython/Plex/Scanners.c -o build/temp.macosx-10.8-intel-2.7/Cython/Plex/Scanners.o</div><div class="line">clang: warning: argument unused during compilation: &apos;-mno-fused-madd&apos;</div><div class="line">Cython/Plex/Scanners.c:4:10: fatal error: &apos;Python.h&apos; file not found</div><div class="line">#include &quot;Python.h&quot;</div><div class="line">         ^</div><div class="line">1 error generated.</div><div class="line">error: command &apos;clang&apos; failed with exit status 1</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">running build_py</div><div class="line">running build_ext</div><div class="line">building <span class="string">'Cython.Plex.Scanners'</span> extension</div><div class="line">clang -fno-strict-aliasing -fno-common -dynamic -g -Os -pipe -fno-common -fno-strict-aliasing -fwrapv -mno-fused-madd -DENABLE_DTRACE -DMACOSX -DNDEBUG -Wall -Wstrict-prototypes -Wshorten-64-to-32 -DNDEBUG -g -Os -Wall -Wstrict-prototypes -DENABLE_DTRACE -arch i386 -arch x86_64 -pipe -I/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -c Cython/Plex/Scanners.c -o build/temp.macosx-10.8-intel-2.7/Cython/Plex/Scanners.o</div><div class="line">clang: warning: argument unused during compilation: <span class="string">'-mno-fused-madd'</span></div><div class="line">Cython/Plex/Scanners.c:4:10: fatal error: <span class="string">'Python.h'</span> file not found</div><div class="line"><span class="comment">#include "Python.h"</span></div><div class="line">         ^</div><div class="line">1 error generated.</div><div class="line">error: <span class="built_in">command</span> <span class="string">'clang'</span> failed with <span class="built_in">exit</span> status 1</div></pre></td></tr></table></figure>
 <p>stackoverflow 上有个最佳答案：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-dev</div></pre></td></tr></table></figure>
 <p>mac 里没有 apt-get 这个工具，傻眼。。。</p>
 <p>其实还在 Xcode 目录中:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Python.framework/Versions/2.7/include</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Python.framework/Versions/2.7/include</div></pre></td></tr></table></figure>
 <p>找到了“Python.h”,怎么让 <code>python setup.py build</code> 时知道呢？再傻眼。。。</p>
 <p>没有师傅指导。。。</p>
 <p>难免走弯路。。。</p>
@@ -161,7 +161,7 @@ OS设置永久环境变量，网上搜了一篇，没">
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2012/12/27/Cython/" data-id="ciyticn660001qsqg4n5121d0" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2012/12/27/Cython/" data-id="ciywl2iaf0001jhqg52mx8wbl" class="article-share-link">分享到</a>
       
 
       
@@ -209,7 +209,7 @@ OS设置永久环境变量，网上搜了一篇，没">
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/douban/">douban</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iteye/">iteye</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/qzone/">qzone</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/吐槽/">吐槽</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站建设/">网站建设</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/音乐/">音乐</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/douban/">douban</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iteye/">iteye</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/qzone/">qzone</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/吐槽/">吐槽</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂项/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站建设/">网站建设</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/音乐/">音乐</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -218,7 +218,7 @@ OS设置永久环境变量，网上搜了一篇，没">
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/actionscript/">actionscript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gis/">gis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayers/">openlayers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/">rxjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yarn/">yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简谱/">简谱</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/actionscript/">actionscript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gis/">gis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openlayers/">openlayers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjs/">rxjs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yarn/">yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简谱/">简谱</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -227,7 +227,7 @@ OS设置永久环境变量，网上搜了一篇，没">
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/actionscript/" style="font-size: 10px;">actionscript</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/gis/" style="font-size: 13.33px;">gis</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openlayers/" style="font-size: 10px;">openlayers</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a> <a href="/tags/简谱/" style="font-size: 10px;">简谱</a>
+      <a href="/tags/actionscript/" style="font-size: 10px;">actionscript</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/gis/" style="font-size: 13.33px;">gis</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/openlayers/" style="font-size: 10px;">openlayers</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rxjs/" style="font-size: 10px;">rxjs</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a> <a href="/tags/简谱/" style="font-size: 10px;">简谱</a>
     </div>
   </div>
 
@@ -236,7 +236,7 @@ OS设置永久环境变量，网上搜了一篇，没">
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">十二月 2010</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">十一月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">十月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">七月 2010</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">十二月 2010</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">十一月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">十月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">七月 2010</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -246,6 +246,10 @@ OS设置永久环境变量，网上搜了一篇，没">
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/02/08/some-mistake-when-i-use-docker-run-redis/">我在为 redis 镜像指定启动配置文件时遇到的一个问题</a>
+          </li>
         
           <li>
             <a href="/2017/02/06/yarn-global-add-hexo-cli-problem/">yarn global add hexo-cli 的问题</a>
@@ -261,10 +265,6 @@ OS设置永久环境变量，网上搜了一篇，没">
         
           <li>
             <a href="/2017/01/24/letsencrypt-certificate/">Let&#39;s Encrypt 证书申请</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/30/use-javascript-get-china-districts-code/">使用 Javascript 获取国家统计局网站行政区划代码</a>
           </li>
         
       </ul>

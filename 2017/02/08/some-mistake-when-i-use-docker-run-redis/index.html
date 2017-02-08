@@ -4,14 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2012/12 | fiftyk</title>
+  <title>我在为 redis 镜像指定启动配置文件时遇到的一个问题 | fiftyk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="fiftyk">
-<meta property="og:url" content="http://fiftyk.github.io/archives/2012/12/index.html">
+  <meta name="description" content="启动 redis 镜像时指定的配置文件 redis.conf 中不能可以配置 daemonize yes。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我在为 redis 镜像指定启动配置文件时遇到的一个问题">
+<meta property="og:url" content="http://fiftyk.github.io/2017/02/08/some-mistake-when-i-use-docker-run-redis/index.html">
 <meta property="og:site_name" content="fiftyk">
+<meta property="og:description" content="启动 redis 镜像时指定的配置文件 redis.conf 中不能可以配置 daemonize yes。">
+<meta property="og:updated_time" content="2017-02-08T06:44:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fiftyk">
+<meta name="twitter:title" content="我在为 redis 镜像指定启动配置文件时遇到的一个问题">
+<meta name="twitter:description" content="启动 redis 镜像时指定的配置文件 redis.conf 中不能可以配置 daemonize yes。">
   
     <link rel="alternative" href="/atom.xml" title="fiftyk" type="application/atom+xml">
   
@@ -63,78 +67,77 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2012" class="archive-year">2012</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-os">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/12/27/Cython/" class="archive-article-date">
-  <time datetime="2012-12-26T16:00:00.000Z" itemprop="datePublished">12月 27</time>
+      <section id="main"><article id="post-some-mistake-when-i-use-docker-run-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/some-mistake-when-i-use-docker-run-redis/" class="article-date">
+  <time datetime="2017-02-08T06:15:23.000Z" itemprop="datePublished">2017-02-08</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/运维/">运维</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/12/27/Cython/">OS Mountain Lion 10.8.2 安装 Cython</a>
+    <h1 class="article-title" itemprop="name">
+      我在为 redis 镜像指定启动配置文件时遇到的一个问题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/12/18/Python运算符重载/" class="archive-article-date">
-  <time datetime="2012-12-17T16:00:00.000Z" itemprop="datePublished">12月 18</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/12/18/Python运算符重载/">Python 运算符重载</a>
-    </h1>
-  
+        <p>启动 redis 镜像时指定的配置文件 <code>redis.conf</code> 中不能可以配置 <code>daemonize yes</code>。<br><a id="more"></a></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>年前在测试机上我就尝试指定外部配置文件给 redis 容器直到昨天。一开始我以为是 <code>-v</code> 挂载文件出了问题。</p>
+<p>如下的启动参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v /docker/redis:/data --name my-redis -d redis redis-server /data/redis.conf</div></pre></td></tr></table></figure>
+<p>在此之前，我已经创建了 <code>/docker/redis/</code> 目录并且给出了 <code>redis.conf</code> 在这个目录中。以为我怀疑是 <code>-v</code> 挂载出了问题，所以我又故意给错配置文件名，将 <code>redis.conf</code> 写成 <code>redis.conf1</code>, 再次运行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v /docker/redis:/data --name my-redis -d redis redis-server /data/redis.conf1</div></pre></td></tr></table></figure>
+<p>报错了，提示找不到 <code>redis.conf1</code>。的确在我给出正确的配置文件时，没有报错，no news is good news？到这时我才怀疑到是不是 <code>redis.conf</code> 的配置出了问题。经过几次尝试确定了问题出在 <code>daemonize yes</code> 这个配置项。</p>
+<h2 id="启示"><a href="#启示" class="headerlink" title="启示"></a>启示</h2><p>一直找不出原因时，我寄希望于在 segmentfault 的<a href="https://segmentfault.com/q/1010000008272753?_ea=1600910" target="_blank" rel="external">提问</a>，就在编写并试图说清楚问题时，我做了以上的尝试。这再次证明了提问也是一个整理思路的过程。这里我又想到了<a href="http://www.jianshu.com/p/60dd8e9cd12f" target="_blank" rel="external">提问的智慧</a>。</p>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>这里我要感谢<a href="lxy520.net">东方星痕</a>的帮助，谢谢你的解答。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/12/01/Chrome-扩展/" class="archive-article-date">
-  <time datetime="2012-12-01T07:34:00.000Z" itemprop="datePublished">12月 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/12/01/Chrome-扩展/">Chrome 扩展</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://fiftyk.github.io/2017/02/08/some-mistake-when-i-use-docker-run-redis/" data-id="ciywl2ibq001bjhqgfacpd3n8" class="article-share-link">分享到</a>
+      
 
-    </header>
+      
+        <a href="http://fiftyk.github.io/2017/02/08/some-mistake-when-i-use-docker-run-redis/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/02/06/yarn-global-add-hexo-cli-problem/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">yarn global add hexo-cli 的问题</div>
+    </a>
   
+</nav>
 
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/08/some-mistake-when-i-use-docker-run-redis/" data-title="我在为 redis 镜像指定启动配置文件时遇到的一个问题" data-url="http://fiftyk.github.io/2017/02/08/some-mistake-when-i-use-docker-run-redis/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">
