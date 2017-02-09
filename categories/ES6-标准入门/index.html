@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>fiftyk</title>
+  <title>Category: ES6 标准入门 | fiftyk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="fiftyk">
-<meta property="og:url" content="http://fiftyk.github.io/page/3/index.html">
+<meta property="og:url" content="http://fiftyk.github.io/categories/ES6-标准入门/index.html">
 <meta property="og:site_name" content="fiftyk">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fiftyk">
@@ -65,267 +65,57 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-personal-summary-2010" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2010/12/26/personal-summary-2010/" class="article-date">
-  <time datetime="2010-12-25T16:00:00.000Z" itemprop="datePublished">2010-12-26</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/02/09/es6-function-extends/" class="archive-article-date">
+  <time datetime="2017-02-09T07:27:25.000Z" itemprop="datePublished">2月 9</time>
 </a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2010/12/26/personal-summary-2010/">2010 年工作总结</a>
+      <a class="archive-article-title" href="/2017/02/09/es6-function-extends/">函数的扩展</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在邮箱的草稿箱里发现了这篇保存于 2010-12-26 日的个人总结。分辨我的一段文字的写作年代，有个很明细的点，就是空格。早些年我写东西时，数字与汉字，英文字母与汉字是没有空格的。<br>
-        
-          <p class="article-more-link">
-            <a href="/2010/12/26/personal-summary-2010/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://fiftyk.github.io/2010/12/26/personal-summary-2010/" data-id="ciyy5n2ar00173mqgce89kt8y" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://fiftyk.github.io/2010/12/26/personal-summary-2010/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-    </footer>
+    </header>
   </div>
-  
 </article>
-
-
   
-    <article id="post-js替换字符串指定位置字符" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2010/12/20/js替换字符串指定位置字符/" class="article-date">
-  <time datetime="2010-12-19T16:00:00.000Z" itemprop="datePublished">2010-12-20</time>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2017/02/04/es6-module/" class="archive-article-date">
+  <time datetime="2017-02-04T02:10:35.000Z" itemprop="datePublished">2月 4</time>
 </a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iteye/">iteye</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2010/12/20/js替换字符串指定位置字符/">javascript 替换字符串指定位置字符</a>
+      <a class="archive-article-title" href="/2017/02/04/es6-module/">ES6 模块加载机制</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<p><a href="http://fiftyk.iteye.com/admin/blogs/847232" target="_blank" rel="external">原文地址</a></p>
-<p>今天遇到这个问题,首先的反应是用正则表达式,但不熟悉,pass掉了,又想到截断字符串,觉得也不好,最后想到使用循环,代码如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.replaceAt = <span class="function"><span class="keyword">function</span>(<span class="params">index,ch</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> newStr = <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> <span class="keyword">this</span>)&#123;</div><div class="line">        <span class="keyword">if</span>(i == index)&#123;</div><div class="line">            newStr += ch;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span>(<span class="keyword">this</span>[i]) == <span class="string">"string"</span>)&#123;</div><div class="line">            newStr += <span class="keyword">this</span>[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>javascript 真强大,感觉应该还有更好的办法,一时没想起来,有路过的大侠,希望能给点建议!谢谢了.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://fiftyk.github.io/2010/12/20/js替换字符串指定位置字符/" data-id="ciyy5n2aq00143mqg0cm9cyab" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://fiftyk.github.io/2010/12/20/js替换字符串指定位置字符/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
 </article>
-
-
   
-    <article id="post-Python-参数传递" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2010/11/22/Python-参数传递/" class="article-date">
-  <time datetime="2010-11-22T02:53:00.000Z" itemprop="datePublished">2010-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/qzone/">qzone</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2010/11/22/Python-参数传递/">Python 参数传递</a>
-    </h1>
+    </div></section>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">(b,c)</span>:</span></div><div class="line">    <span class="keyword">print</span> b,c</div><div class="line">a(<span class="number">1</span>,<span class="number">2</span>)</div><div class="line">a(*[<span class="number">1</span>,<span class="number">2</span>])</div><div class="line">a(**&#123;<span class="string">'b'</span>:<span class="number">1</span>,<span class="string">'c'</span>:<span class="number">2</span>&#125;)</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://fiftyk.github.io/2010/11/22/Python-参数传递/" data-id="ciyy5n2a8000b3mqg6fha94i4" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://fiftyk.github.io/2010/11/22/Python-参数传递/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-空间数据库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2010/10/11/空间数据库/" class="article-date">
-  <time datetime="2010-10-11T02:40:10.000Z" itemprop="datePublished">2010-10-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/douban/">douban</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2010/10/11/空间数据库/">空间数据库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<p><a href="https://www.douban.com/note/94799143/" target="_blank" rel="external">原文地址</a></p>
-<p>看到 OracleSptial 之前,我才知道一些空间分析计算早已被做进了数据库.一条 sql 语句就可以计算两点之间的距离,一个商店2公里范围之内有多少客户…</p>
-<p>我曾自己写了求折线平行线,裁剪 polyline 的算法,当时我也知道肯定有这样的轮子呢,但不知道在哪里,或者不知道怎么用.</p>
-<p>最近可能会有最短路径的问题,断断续续看了一些 A* 算法以及 Dijkstra 算法,钻研的精神不知道那里去了,始终没有入门,</p>
-<p>上周六又看了一天 PostGIS, Spatialite 的文章,他们和 Oracle Spatial 类似, Spatialite 提供了 network 分析的<br>工具,其中最短路径的计算,它用的就是 Dijkstra 算法.</p>
-<p>很可惜, PostGIS, Spatialite 连安装我都没有搞定,</p>
-<p>之前看到过一遍文章,说为什么做了 3 年程序员,有些人还是感觉有点茫然.文章作者给出了原因:没有总结!有同感,最近脑子感觉一团浆糊.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://fiftyk.github.io/2010/10/11/空间数据库/" data-id="ciyy5n2ba00243mqgxcp23sie" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://fiftyk.github.io/2010/10/11/空间数据库/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gis/">gis</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-as-无效的过程调用或参数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2010/07/16/as-无效的过程调用或参数/" class="article-date">
-  <time datetime="2010-07-16T05:41:14.000Z" itemprop="datePublished">2010-07-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/douban/">douban</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2010/07/16/as-无效的过程调用或参数/">无效的过程调用或参数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<p><a href="https://www.douban.com/note/80888634/" target="_blank" rel="external">原文地址</a></p>
-<p>我将 actionscript 中的一个名为 dir 的方法,通过 ExternalInterface.addCallback(js_function_name,as_function) 开放给 JavaScript 调用, FireFox 下没有错误，IE8 下却报错,但不影响其程序其他部分运行。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/" data-id="ciyy5n2al000x3mqgfjkhmlyu" class="article-share-link">分享到</a>
-      
-
-      
-        <a href="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/actionscript/">actionscript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
 </section>
       
       <aside id="sidebar">
