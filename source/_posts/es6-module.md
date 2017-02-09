@@ -1,8 +1,8 @@
 ---
-title: ES6 模块加载加载机制
+title: ES6 模块加载机制
 date: 2017-02-04 10:10:35
 categories:
-- 学习
+- ES6 标准入门
 tags:
 - es6
 ---
