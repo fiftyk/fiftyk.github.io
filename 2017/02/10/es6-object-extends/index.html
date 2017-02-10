@@ -4,21 +4,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>无效的过程调用或参数 | fiftyk</title>
+  <title>对象的扩展 | fiftyk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文地址
-我将 actionscript 中的一个名为 dir 的方法,通过 ExternalInterface.addCallback(js_function_name,as_function) 开放给 JavaScript 调用, FireFox 下没有错误，IE8 下却报错,但不影响其程序其他部分运行。">
+  <meta name="description" content="本文是《ES6 标准入门（第 2 版）》第 9 章 的笔记。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无效的过程调用或参数">
-<meta property="og:url" content="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/index.html">
+<meta property="og:title" content="对象的扩展">
+<meta property="og:url" content="http://fiftyk.github.io/2017/02/10/es6-object-extends/index.html">
 <meta property="og:site_name" content="fiftyk">
-<meta property="og:description" content="原文地址
-我将 actionscript 中的一个名为 dir 的方法,通过 ExternalInterface.addCallback(js_function_name,as_function) 开放给 JavaScript 调用, FireFox 下没有错误，IE8 下却报错,但不影响其程序其他部分运行。">
-<meta property="og:updated_time" content="2016-12-20T07:46:41.000Z">
+<meta property="og:description" content="本文是《ES6 标准入门（第 2 版）》第 9 章 的笔记。">
+<meta property="og:updated_time" content="2017-02-10T09:21:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无效的过程调用或参数">
-<meta name="twitter:description" content="原文地址
-我将 actionscript 中的一个名为 dir 的方法,通过 ExternalInterface.addCallback(js_function_name,as_function) 开放给 JavaScript 调用, FireFox 下没有错误，IE8 下却报错,但不影响其程序其他部分运行。">
+<meta name="twitter:title" content="对象的扩展">
+<meta name="twitter:description" content="本文是《ES6 标准入门（第 2 版）》第 9 章 的笔记。">
   
     <link rel="alternative" href="/atom.xml" title="fiftyk" type="application/atom+xml">
   
@@ -70,14 +67,14 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-as-无效的过程调用或参数" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-es6-object-extends" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2010/07/16/as-无效的过程调用或参数/" class="article-date">
-  <time datetime="2010-07-16T05:41:14.000Z" itemprop="datePublished">2010-07-16</time>
+    <a href="/2017/02/10/es6-object-extends/" class="article-date">
+  <time datetime="2017-02-10T07:47:08.000Z" itemprop="datePublished">2017-02-10</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/douban/">douban</a>
+    <a class="article-category-link" href="/categories/ES6-标准入门/">ES6 标准入门</a>
   </div>
 
   </div>
@@ -88,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无效的过程调用或参数
+      对象的扩展
     </h1>
   
 
@@ -96,23 +93,119 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p><a href="https://www.douban.com/note/80888634/" target="_blank" rel="external">原文地址</a></p>
-<p>我将 actionscript 中的一个名为 dir 的方法,通过 ExternalInterface.addCallback(js_function_name,as_function) 开放给 JavaScript 调用, FireFox 下没有错误，IE8 下却报错,但不影响其程序其他部分运行。</p>
-
+        <p>本文是《<a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ES6 标准入门（第 2 版）</a>》<a href="http://es6.ruanyifeng.com/#docs/object" target="_blank" rel="external">第 9 章</a> 的笔记。<br><a id="more"></a></p>
+<p>对象的扩展总结下来有以下几处：</p>
+<ul>
+<li>属性的简洁表示法；</li>
+<li>属性表达式；</li>
+<li>方法的 name 属性；</li>
+<li>Object.is；</li>
+<li>Object.assign；</li>
+<li>Object.setPrototypeOf &amp; Object.getPrototypeOf；</li>
+<li>对象属性的枚举性以及遍历；</li>
+<li>对象扩展运算符；</li>
+</ul>
+<h2 id="属性的简洁表示法"><a href="#属性的简洁表示法" class="headerlink" title="属性的简洁表示法"></a>属性的简洁表示法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123;bar&#125;</div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">let</span> foo = &#123;<span class="attr">bar</span>: <span class="string">'bar'</span>&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> foo = &#123;bar()&#123;&#125;&#125;</div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">let</span> foo = &#123;<span class="attr">bar</span>: <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;&#125;&#125;</div></pre></td></tr></table></figure>
+<h2 id="属性表达式"><a href="#属性表达式" class="headerlink" title="属性表达式"></a>属性表达式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123;[<span class="string">'bar'</span> + <span class="number">0</span>]: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;&#125;</div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">let</span> foo = &#123;<span class="attr">bar0</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;&#125;</div><div class="line"><span class="comment">// 但，下面不可以</span></div><div class="line"><span class="keyword">let</span> foo = &#123;[<span class="string">'bar'</span> + <span class="number">0</span>]()&#123;&#125;&#125;</div></pre></td></tr></table></figure>
+<p>属性表达式不可以同属性简洁表示法混用。</p>
+<h2 id="方法的-name-属性"><a href="#方法的-name-属性" class="headerlink" title="方法的 name 属性"></a>方法的 name 属性</h2><p>这个和 function 的 name 属性一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123;[<span class="string">'bar'</span> + <span class="number">0</span>]: <span class="function"><span class="keyword">function</span> (<span class="params">a, b, ...c</span>)</span>&#123;&#125;&#125;</div><div class="line">foo.bar0.name<span class="comment">// 'bar0'</span></div><div class="line"><span class="comment">// 类比一下函数的 length 属性</span></div><div class="line">foo.bar0.length<span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<h2 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is"></a>Object.is</h2><p>判断两个值是否严格相等:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.is(<span class="literal">null</span>, <span class="literal">null</span>)<span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.is(<span class="literal">undefined</span>, <span class="literal">undefined</span>)<span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.is(<span class="literal">true</span>, <span class="literal">true</span>)<span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.is(<span class="string">'1'</span>, <span class="string">'1'</span>)<span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.is(<span class="number">1</span>, <span class="number">1</span>)<span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>)<span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="built_in">Object</span>.is(<span class="number">-0</span>, +<span class="number">0</span>)<span class="comment">// false</span></div><div class="line"><span class="built_in">Object</span>.is(&#123;&#125;, &#123;&#125;)<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h2 id="Object-assign-target-…sources"><a href="#Object-assign-target-…sources" class="headerlink" title="Object.assign(target, …sources)"></a>Object.assign(target, …sources)</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="external">MDN: Object.assign()</a></p>
+<p>几点需要明确：</p>
+<ul>
+<li>copy 所有 string 和 symbol 属性；</li>
+<li>仅 copy 自身属性和可枚举属性；</li>
+<li><code>It uses [[Get]] on the source and [[Set]] on the target</code>;</li>
+<li>target 如果是原始类型，会被先转成对象；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = &#123;<span class="attr">s</span>: <span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> so = <span class="built_in">Object</span>.assign(s, <span class="literal">null</span>,&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;)</div><div class="line">s === so<span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> so = <span class="built_in">Object</span>.assign(s, <span class="literal">null</span>,&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;)</div><div class="line">s === so<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h2 id="Object-setPrototypeOf-amp-Object-getPrototypeOf"><a href="#Object-setPrototypeOf-amp-Object-getPrototypeOf" class="headerlink" title="Object.setPrototypeOf &amp; Object.getPrototypeOf"></a>Object.setPrototypeOf &amp; Object.getPrototypeOf</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.setPrototypeOf(foo, bar);</div><div class="line"><span class="comment">// 相当于</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setPrototypeOf</span>(<span class="params">foo, bar</span>) </span>&#123;</div><div class="line">  foo.prototype = bar;</div><div class="line">  <span class="keyword">return</span> foo;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="对象属性的枚举性以及遍历"><a href="#对象属性的枚举性以及遍历" class="headerlink" title="对象属性的枚举性以及遍历"></a>对象属性的枚举性以及遍历</h2><table>
+<thead>
+<tr>
+<th>—</th>
+<th>unenumerable</th>
+<th>string</th>
+<th>symbol</th>
+<th>proto-unenumerable</th>
+<th>proto-string</th>
+<th>proto-symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>for in</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Object.keys</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Object.getOwnPropertyNames</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Object.getOwnSymbols</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Reflect.ownKeys</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><del>Reflect.enumerate</del></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="对象扩展运算符"><a href="#对象扩展运算符" class="headerlink" title="对象扩展运算符"></a>对象扩展运算符</h2><p>ES7 的提案。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;x, y, ...z&#125; = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>, <span class="attr">z</span>: <span class="number">3</span>, <span class="attr">a</span>: <span class="number">4</span>&#125;</div><div class="line">x<span class="comment">// 1</span></div><div class="line">y<span class="comment">// 2</span></div><div class="line">z<span class="comment">// &#123;z: 3, a: 4&#125;</span></div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/" data-id="ciyzirh17000zieqgkcplghty" class="article-share-link">分享到</a>
+        <a data-url="http://fiftyk.github.io/2017/02/10/es6-object-extends/" data-id="ciyzirh10000oieqg6azgo2nr" class="article-share-link">分享到</a>
       
 
       
-        <a href="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://fiftyk.github.io/2017/02/10/es6-object-extends/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/actionscript/">actionscript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
 
     </footer>
   </div>
@@ -120,15 +213,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2010/10/11/空间数据库/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          空间数据库
-        
-      </div>
-    </a>
   
+    <a href="/2017/02/10/three-danger-ideas-for-programmer-career/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">十年工龄的程序员为你揭示最危害程序员职业生涯的三大观念（网摘）</div>
+    </a>
   
 </nav>
 
@@ -137,7 +226,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2010/07/16/as-无效的过程调用或参数/" data-title="无效的过程调用或参数" data-url="http://fiftyk.github.io/2010/07/16/as-无效的过程调用或参数/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/10/es6-object-extends/" data-title="对象的扩展" data-url="http://fiftyk.github.io/2017/02/10/es6-object-extends/"></div>
   </section>
 </section>
       
