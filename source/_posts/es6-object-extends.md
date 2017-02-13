@@ -105,14 +105,87 @@ function setPrototypeOf(foo, bar) {
 
 ## 对象属性的枚举性以及遍历
 
-|---|unenumerable|string|symbol|proto-unenumerable|proto-string|proto-symbol| 
-|---|---|---|---|---|---|---|---|
-|for in|||||||
-|Object.keys|||||||
-|Object.getOwnPropertyNames|||||||
-|Object.getOwnSymbols|||||||
-|Reflect.ownKeys|||||||
-|~~Reflect.enumerate~~||||||||
+* for in
+* Object.keys
+* Object.getOwnPropertyNames
+* Object.getOwnPropertySymbols
+* Reflect.ownKeys
+* ~~Reflect.enumerate~~
+
+```javascript
+let parent = {
+  p1: 'p1', 
+  [Symbol('p2')]: 'p2'
+};
+
+Object.defineProperties(parent, {
+  'p3': {
+    value: 'p3',
+    enumerable: false,
+    writable: true,
+    configurable: true
+  }
+});
+
+let child = {
+  c1: 'c1', 
+  [Symbol('c2')]: 'c2'
+};
+
+Object.defineProperties(child, {
+  'c3': {
+    value: 'c3',
+    enumerable: false,
+    writable: true,
+    configurable: true
+  }
+});
+
+Object.setPrototypeOf(child, parent);
+
+for (let key in child)
+  console.log(key)
+// > c1 
+// > p1
+
+Object.keys(child)
+// > ["c1"]
+
+Object.getOwnPropertyNames(child)
+// > ["c1", "c3"]
+
+Object.getOwnPropertySymbols(child)
+// > [Symbol(c2)]
+
+Reflect.ownKeys(child);
+// > ["c1", "c3", Symbol(c2)]
+```
+
+### 遍历次序规则
+
+* 数字属性优先，安装数字大小；
+* 再字符串，按生成顺序；
+* 最后 symbol 属性，按生成顺序；
+
+```javascript
+let parent = {
+  1: 'p1', 
+  [Symbol('p2')]: 'p2',
+  [Symbol('p0')]: 'p0',
+  0: '0',
+  '---': '---',
+  '-2': '-2',
+  '100': '100',
+  '20': '20',
+  '----': '----',
+  '-100': '-100', 
+  'z': 'z',
+  'a': 'a'
+};
+
+Reflect.ownKeys(parent);
+// > ["0", "1", "20", "100", "---", "-2", "----", "-100", "z", "a", Symbol(p2), Symbol(p0)]
+```
 
 ## 对象扩展运算符
 
