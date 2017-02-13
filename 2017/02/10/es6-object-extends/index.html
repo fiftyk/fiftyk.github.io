@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://fiftyk.github.io/2017/02/10/es6-object-extends/index.html">
 <meta property="og:site_name" content="fiftyk">
 <meta property="og:description" content="本文是《ES6 标准入门（第 2 版）》第 9 章 的笔记。">
-<meta property="og:updated_time" content="2017-02-10T09:21:40.000Z">
+<meta property="og:updated_time" content="2017-02-13T02:10:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对象的扩展">
 <meta name="twitter:description" content="本文是《ES6 标准入门（第 2 版）》第 9 章 的笔记。">
@@ -122,77 +122,24 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = &#123;<span class="attr">s</span>: <span class="number">1</span>&#125;</div><div class="line"><span class="keyword">var</span> so = <span class="built_in">Object</span>.assign(s, <span class="literal">null</span>,&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;)</div><div class="line">s === so<span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s = <span class="number">1</span></div><div class="line"><span class="keyword">var</span> so = <span class="built_in">Object</span>.assign(s, <span class="literal">null</span>,&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;)</div><div class="line">s === so<span class="comment">// false</span></div></pre></td></tr></table></figure>
 <h2 id="Object-setPrototypeOf-amp-Object-getPrototypeOf"><a href="#Object-setPrototypeOf-amp-Object-getPrototypeOf" class="headerlink" title="Object.setPrototypeOf &amp; Object.getPrototypeOf"></a>Object.setPrototypeOf &amp; Object.getPrototypeOf</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.setPrototypeOf(foo, bar);</div><div class="line"><span class="comment">// 相当于</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setPrototypeOf</span>(<span class="params">foo, bar</span>) </span>&#123;</div><div class="line">  foo.prototype = bar;</div><div class="line">  <span class="keyword">return</span> foo;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="对象属性的枚举性以及遍历"><a href="#对象属性的枚举性以及遍历" class="headerlink" title="对象属性的枚举性以及遍历"></a>对象属性的枚举性以及遍历</h2><table>
-<thead>
-<tr>
-<th>—</th>
-<th>unenumerable</th>
-<th>string</th>
-<th>symbol</th>
-<th>proto-unenumerable</th>
-<th>proto-string</th>
-<th>proto-symbol</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>for in</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Object.keys</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Object.getOwnPropertyNames</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Object.getOwnSymbols</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Reflect.ownKeys</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><del>Reflect.enumerate</del></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<h2 id="对象属性的枚举性以及遍历"><a href="#对象属性的枚举性以及遍历" class="headerlink" title="对象属性的枚举性以及遍历"></a>对象属性的枚举性以及遍历</h2><ul>
+<li>for in</li>
+<li>Object.keys</li>
+<li>Object.getOwnPropertyNames</li>
+<li>Object.getOwnPropertySymbols</li>
+<li>Reflect.ownKeys</li>
+<li><del>Reflect.enumerate</del></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> parent = &#123;</div><div class="line">  <span class="attr">p1</span>: <span class="string">'p1'</span>, </div><div class="line">  [<span class="built_in">Symbol</span>(<span class="string">'p2'</span>)]: <span class="string">'p2'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperties(parent, &#123;</div><div class="line">  <span class="string">'p3'</span>: &#123;</div><div class="line">    <span class="attr">value</span>: <span class="string">'p3'</span>,</div><div class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">writable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">configurable</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">let</span> child = &#123;</div><div class="line">  <span class="attr">c1</span>: <span class="string">'c1'</span>, </div><div class="line">  [<span class="built_in">Symbol</span>(<span class="string">'c2'</span>)]: <span class="string">'c2'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperties(child, &#123;</div><div class="line">  <span class="string">'c3'</span>: &#123;</div><div class="line">    <span class="attr">value</span>: <span class="string">'c3'</span>,</div><div class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">writable</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">configurable</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.setPrototypeOf(child, parent);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> child)</div><div class="line">  <span class="built_in">console</span>.log(key)</div><div class="line"><span class="comment">// &gt; c1 </span></div><div class="line"><span class="comment">// &gt; p1</span></div><div class="line"></div><div class="line"><span class="built_in">Object</span>.keys(child)</div><div class="line"><span class="comment">// &gt; ["c1"]</span></div><div class="line"></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(child)</div><div class="line"><span class="comment">// &gt; ["c1", "c3"]</span></div><div class="line"></div><div class="line"><span class="built_in">Object</span>.getOwnPropertySymbols(child)</div><div class="line"><span class="comment">// &gt; [Symbol(c2)]</span></div><div class="line"></div><div class="line"><span class="built_in">Reflect</span>.ownKeys(child);</div><div class="line"><span class="comment">// &gt; ["c1", "c3", Symbol(c2)]</span></div></pre></td></tr></table></figure>
+<h3 id="遍历次序规则"><a href="#遍历次序规则" class="headerlink" title="遍历次序规则"></a>遍历次序规则</h3><ul>
+<li>数字属性优先，安装数字大小；</li>
+<li>再字符串，按生成顺序；</li>
+<li>最后 symbol 属性，按生成顺序；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> parent = &#123;</div><div class="line">  <span class="number">1</span>: <span class="string">'p1'</span>, </div><div class="line">  [<span class="built_in">Symbol</span>(<span class="string">'p2'</span>)]: <span class="string">'p2'</span>,</div><div class="line">  [<span class="built_in">Symbol</span>(<span class="string">'p0'</span>)]: <span class="string">'p0'</span>,</div><div class="line">  <span class="number">0</span>: <span class="string">'0'</span>,</div><div class="line">  <span class="string">'---'</span>: <span class="string">'---'</span>,</div><div class="line">  <span class="string">'-2'</span>: <span class="string">'-2'</span>,</div><div class="line">  <span class="string">'100'</span>: <span class="string">'100'</span>,</div><div class="line">  <span class="string">'20'</span>: <span class="string">'20'</span>,</div><div class="line">  <span class="string">'----'</span>: <span class="string">'----'</span>,</div><div class="line">  <span class="string">'-100'</span>: <span class="string">'-100'</span>, </div><div class="line">  <span class="string">'z'</span>: <span class="string">'z'</span>,</div><div class="line">  <span class="string">'a'</span>: <span class="string">'a'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Reflect</span>.ownKeys(parent);</div><div class="line"><span class="comment">// &gt; ["0", "1", "20", "100", "---", "-2", "----", "-100", "z", "a", Symbol(p2), Symbol(p0)]</span></div></pre></td></tr></table></figure>
 <h2 id="对象扩展运算符"><a href="#对象扩展运算符" class="headerlink" title="对象扩展运算符"></a>对象扩展运算符</h2><p>ES7 的提案。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;x, y, ...z&#125; = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>, <span class="attr">z</span>: <span class="number">3</span>, <span class="attr">a</span>: <span class="number">4</span>&#125;</div><div class="line">x<span class="comment">// 1</span></div><div class="line">y<span class="comment">// 2</span></div><div class="line">z<span class="comment">// &#123;z: 3, a: 4&#125;</span></div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
