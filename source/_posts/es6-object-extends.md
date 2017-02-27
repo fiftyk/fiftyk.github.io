@@ -197,3 +197,121 @@ x// 1
 y// 2
 z// {z: 3, a: 4}
 ```
+
+> Generator 函数总是返回一个遍历器， ES6 规定这个遍历器是 Generator 函数的实例，也继承了 Generator 函数 prototype 对象上的方法。
+
+```javascript
+function* gen() {}
+
+gen.prototype.hi = function() {
+  console.log('hi');
+};
+
+let g = gen();
+
+g instanceof gen;           // true
+gen[Symbol.hasIntance](g);  // true
+g.hi();                     // 'hi'
+```
+
+> 参数的求值策略：传值调用 `call by value`， 传名调用 `call by name`。
+
+```javascript
+function foo(x, y) {
+  return y;
+}
+var a = 1;
+var b = 2;
+
+foo(a + 5, b);
+```
+
+传值调用的话，即先计算 `a + 5`, `foo(a + 5, b)` 即 `foo(6, 2)`。传名调用也有它的好处，对上面的 foo 函数而言我们不用计算 `a + 5`，因为这个参数不影响最终结果，没有被使用到。传值调用为我们省去了不必要的计算。
+
+### Thunk 函数
+
+> Thunk 函数是自动执行 Generator 函数的一种方法。
+
+Thunk 函数是一种 "传名调用" 的实现方式，Javascript 里我们通过将语句包装成函数来实现：
+
+```javascript
+// 将任意参数有回调函数的方法，转换为 Thunk 形式
+function Thunk(fn) {
+  return function(...args) {
+    return function(callback){
+      fn.call(this, ...args, callback)
+    }
+  }
+}
+
+var ThunkReadFile = Thunk(fs.readFile);
+ThunkReadFile(file)(callback);
+```
+
+基于 Thunk 的 Generator 函数自动调度：
+
+```javascript
+var gen = function* (){
+  yield ThunkReadFile(fileA);
+  yield ThunkReadFile(fileB);
+  //..
+  yield ThunkReadFile(fileN);
+};
+
+function run (gen) {
+  var g = gen();
+
+  function next(err, data) {
+    let result = g.next();
+    if(result.done)(
+      return;
+    )
+    result.value(next);
+  }
+
+  next();
+}
+```
+
+基于 Promise 的 Generator 函数自动调度：
+
+```javascript
+var read = function(file) {
+  return new Promise(function(resolve, reject) {
+    fs.readFile(file, (error, data) > {
+      if (error) {
+        reject(err);
+      } else{
+        resolve(data);
+      }
+    })
+  });
+}
+
+var gen = function* (){
+  yield read(fileA);
+  yield read(fileB);
+  //..
+  yield read(fileN);
+};
+
+function run(gen) {
+  var g = gen();
+
+  function next() {
+    var result = g.next();
+    if(result.done) {
+      return;
+    }
+    result.value.then(next);
+  }
+
+  next();
+};
+```
+
+> async 函数返回一个 Promise 对象。
+
+> async 函数内部的 return 语句返回的值，会成为 then 方法回调函数的参数。
+
+await 命令后面是一个 promise 对象。
