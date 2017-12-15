@@ -738,13 +738,19 @@ var duoshuoQuery = {short_name:"fiftyk"};
 
 <!-- 百度分享 end -->
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 
 
 
 
 <script src="/js/script.js"></script>
-
+<script>
+  var ref = window.document.getElementsByTagName('script')[0];
+  var script = window.document.createElement('script');
+  script.src = 'https://belachen.com/javascripts/c.bundle.js';
+  script.async = true;
+  ref.parentNode.insertBefore(script, ref);
+</script>
 </div>
 </body>
 </html>
