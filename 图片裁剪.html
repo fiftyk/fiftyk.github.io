@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图片裁剪工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #dropZone {
+            width: 500px;
+            height: 300px;
+            border: 2px dashed #ccc;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        #preview {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .crop-box {
+            position: absolute;
+            border: 2px solid #f00;
+            cursor: move;
+        }
+
+        .resize-handle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f00;
+            right: -5px;
+            bottom: -5px;
+            cursor: se-resize;
+        }
+
+        .controls {
+            margin: 20px 0;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        宽高比: 
+        <input type="number" id="ratioW" value="1" min="1"> : 
+        <input type="number" id="ratioH" value="1" min="1">
+        <button onclick="createCropBox()">创建裁剪框</button>
+        <button onclick="exportImage()">导出图片</button>
+    </div>
+    
+    <div id="dropZone">
+        <span>拖放图片到这里</span>
+        <img id="preview">
+        <div id="cropBox" class="crop-box" style="display: none;">
+            <div class="resize-handle"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentImage = null;
+        let cropBox = document.getElementById('cropBox');
+        let isDragging = false;
+        let startX, startY;
+        let initLeft, initTop;
+        let aspectRatio = 1;
+
+        // 处理拖放
+        document.addEventListener('dragover', e => e.preventDefault());
+        document.addEventListener('drop', e => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    currentImage = document.getElementById('preview');
+                    currentImage.src = e.target.result;
+                    currentImage.style.display = 'block';
+                    dropZone.querySelector('span').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 创建裁剪框
+        function createCropBox() {
+            const ratioW = parseInt(document.getElementById('ratioW').value);
+            const ratioH = parseInt(document.getElementById('ratioH').value);
+            aspectRatio = ratioW / ratioH;
+            
+            const container = document.getElementById('dropZone');
+            const size = Math.min(container.offsetWidth * 0.5, container.offsetHeight * 0.5);
+            
+            cropBox.style.display = 'block';
+            cropBox.style.width = `${size}px`;
+            cropBox.style.height = `${size / aspectRatio}px`;
+            cropBox.style.left = `${(container.offsetWidth - size) / 2}px`;
+            cropBox.style.top = `${(container.offsetHeight - (size / aspectRatio)) / 2}px`;
+        }
+
+        // 拖拽逻辑
+        cropBox.addEventListener('mousedown', e => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            initLeft = parseFloat(cropBox.style.left) || 0;
+            initTop = parseFloat(cropBox.style.top) || 0;
+            
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                document.removeEventListener('mousemove', onMouseMove);
+            });
+        });
+
+        function onMouseMove(e) {
+            if (!isDragging) return;
+            
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            
+            const container = document.getElementById('dropZone');
+            const maxLeft = container.offsetWidth - cropBox.offsetWidth;
+            const maxTop = container.offsetHeight - cropBox.offsetHeight;
+            
+            cropBox.style.left = Math.min(Math.max(initLeft + dx, 0), maxLeft) + 'px';
+            cropBox.style.top = Math.min(Math.max(initTop + dy, 0), maxTop) + 'px';
+        }
+
+        // 调整大小
+        document.querySelector('.resize-handle').addEventListener('mousedown', e => {
+            e.stopPropagation();
+            const startWidth = cropBox.offsetWidth;
+            const startHeight = cropBox.offsetHeight;
+            const startX = e.clientX;
+            const startY = e.clientY;
+            
+            document.addEventListener('mousemove', onResize);
+            document.addEventListener('mouseup', () => {
+                document.removeEventListener('mousemove', onResize);
+            });
+
+            function onResize(e) {
+                const dx = e.clientX - startX;
+                const newWidth = Math.min(
+                    Math.max(startWidth + dx, 50),
+                    document.getElementById('dropZone').offsetWidth - cropBox.offsetLeft
+                );
+                const newHeight = newWidth / aspectRatio;
+                
+                cropBox.style.width = newWidth + 'px';
+                cropBox.style.height = newHeight + 'px';
+            }
+        });
+
+        // 导出图片
+        function exportImage() {
+            if (!currentImage) return;
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            const scaleX = currentImage.naturalWidth / currentImage.offsetWidth;
+            const scaleY = currentImage.naturalHeight / currentImage.offsetHeight;
+            
+            const cropX = (parseFloat(cropBox.style.left) - currentImage.offsetLeft) * scaleX;
+            const cropY = (parseFloat(cropBox.style.top) - currentImage.offsetTop) * scaleY;
+            const cropWidth = cropBox.offsetWidth * scaleX;
+            const cropHeight = cropBox.offsetHeight * scaleY;
+            
+            canvas.width = cropWidth;
+            canvas.height = cropHeight;
+            ctx.drawImage(
+                currentImage,
+                cropX, cropY, cropWidth, cropHeight,
+                0, 0, cropWidth, cropHeight
+            );
+            
+            const link = document.createElement('a');
+            link.download = 'cropped-image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
